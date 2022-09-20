@@ -17,6 +17,8 @@
 		60A2CB8028D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */; };
 		60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9028D9FE9F002321AC /* SearchViewController.swift */; };
 		60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */; };
+		60A2CB9628DA0FFE002321AC /* Ingredient.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */; };
+		60A2CB9828DA1010002321AC /* IngredientService.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		60A2CB9028D9FE9F002321AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.Sample.swift; sourceTree = "<group>"; };
+		60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientService.Sample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		60A2CB8C28D9F5F0002321AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				60A2CB9428DA0FE4002321AC /* Samples */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +165,15 @@
 				60A2CB6528D9F5A3002321AC /* Assets.xcassets */,
 			);
 			path = "Supported Files";
+			sourceTree = "<group>";
+		};
+		60A2CB9428DA0FE4002321AC /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */,
+				60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */,
+			);
+			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +309,8 @@
 			files = (
 				60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */,
 				60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */,
+				60A2CB9628DA0FFE002321AC /* Ingredient.Sample.swift in Sources */,
+				60A2CB9828DA1010002321AC /* IngredientService.Sample.swift in Sources */,
 				60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */,
 				60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */,
 			);
