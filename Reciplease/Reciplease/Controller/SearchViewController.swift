@@ -22,6 +22,11 @@ class SearchViewController: UIViewController {
         ingredientsTextField.resignFirstResponder()
     }
     
+    @IBAction func clearList(_ sender: Any) {
+        IngredientService.shared.removeAll()
+        ingredientTableView.dataSource = nil
+        ingredientTableView.reloadData()
+    }
     
     @IBAction func addIngredient(_ sender: Any) {
         guard let name = ingredientsTextField.text else { return }

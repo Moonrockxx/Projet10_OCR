@@ -21,4 +21,8 @@ class IngredientService {
     func remove(at index: Int) {
         ingredients.remove(at: index)
     }
+    
+    func removeAll() {
+        ingredients = []
+    }
 }

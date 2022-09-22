@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "pates3-image-sample.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
