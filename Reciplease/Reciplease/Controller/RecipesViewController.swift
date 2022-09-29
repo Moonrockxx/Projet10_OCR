@@ -10,6 +10,17 @@ import UIKit
 class RecipesViewController: UIViewController {
 
     @IBOutlet weak var recipesTableView: UITableView!
+    public var recipes: Recipes?
+    
+    init(recipes: Recipes) {
+        super.init(nibName: nil, bundle: nil)
+        self.recipes = recipes
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,24 +32,41 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Recipes.Samples().samples.count
+        guard let count = self.recipes?.hits.count else {
+            return 0
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as? RecipesTableViewCell else {
             return UITableViewCell()
         }
-        let recipe = Recipes.Samples().samples[indexPath.row]
-
-        cell.configure(like: recipe.likes, time: recipe.time, title: recipe.title, subtitle: recipe.subtitle)
+        
+        let recipe = recipes?.hits[indexPath.row]
+        cell.configure(like: Int.random(in: 1..<5000),
+                       time: recipe?.recipe.totalTime ?? 0,
+                       title: recipe?.recipe.label ?? "N/A",
+                       subtitle: recipe?.recipe.ingredientLines.joined(separator: ", ") ?? "N/A")
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width + 50, height: cell.frame.height))
-        let image = UIImage(named: recipe.image)
+        imageView.contentMode = .scaleAspectFill
+        
+        let image = UIImage(named: recipe?.recipe.images.regular.url ?? "")
         imageView.image = image
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = imageView.bounds
+        let startColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0).cgColor
+        let endColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        gradient.colors = [startColor, endColor]
+        imageView.layer.insertSublayer(gradient, at: 0)
+        
         cell.backgroundView = UIView()
         cell.backgroundView!.addSubview(imageView)
-        
         
         return cell
     }
 }
+
+

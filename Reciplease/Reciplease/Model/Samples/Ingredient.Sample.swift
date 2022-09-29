@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Ingredient {
+struct IngredientSamples {
     var name: String = ""
 }

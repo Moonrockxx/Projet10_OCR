@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var ingredientTableView: UITableView!
     @IBOutlet weak var clearIngredientListButton: UIButton!
     
+    private var ingredients: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,12 +31,41 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func addIngredient(_ sender: Any) {
-        guard let name = ingredientsTextField.text else { return }
-        let ingredient = Ingredient(name: name)
-        IngredientService.shared.add(ingredient: ingredient)
+        guard let ingredientNames = ingredientsTextField.text else { return }
+        
+        let array = ingredientNames.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespacesAndNewlines)) }
+        array.forEach { name in
+            let ingredient = IngredientSamples(name: name)
+            self.ingredients.append(name)
+            IngredientService.shared.add(ingredient: ingredient)
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.ingredientTableView.reloadData()
             self.ingredientsTextField.text = ""
+        }
+    }
+    
+    @IBAction func goToRecipesList(_ sender: Any) {
+        APIService.shared.getRecipes(ingredients: ingredients) { result in
+            switch result {
+            case .success(let recipes):
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "Reciplease", sender: recipes)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.presentAlert(title: "Error", message: error.description)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Reciplease" {
+            let recipesVC = segue.description as? RecipesViewController
+            let recipes = sender as? Recipes
+            recipesVC?.recipes = recipes
         }
     }
 }
@@ -52,7 +83,7 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         let ingredient = IngredientService.shared.ingredients[indexPath.row]
-        cell.textLabel?.text = "- \(ingredient.name)"
+        cell.textLabel?.text = "- \(ingredient.name.trimmingLeadingAndTrailingSpaces())"
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
@@ -72,5 +103,11 @@ extension SearchViewController: UITableViewDelegate {
            IngredientService.shared.remove(at: indexPath.row)
            tableView.deleteRows(at: [indexPath], with: .automatic)
        }
+    }
+}
+
+extension String {
+    func trimmingLeadingAndTrailingSpaces(using characterSet: CharacterSet = .whitespacesAndNewlines) -> String {
+        return trimmingCharacters(in: characterSet)
     }
 }

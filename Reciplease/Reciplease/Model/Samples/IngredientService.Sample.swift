@@ -12,9 +12,9 @@ class IngredientService {
     
     private init() {}
     
-    private(set) var ingredients: [Ingredient] = []
+    private(set) var ingredients: [IngredientSamples] = []
     
-    func add(ingredient: Ingredient) {
+    func add(ingredient: IngredientSamples) {
         ingredients.append(ingredient)
     }
     
