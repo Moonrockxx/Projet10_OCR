@@ -69,11 +69,11 @@
                                 <rect key="frame" x="0.0" y="91" width="390" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="RecipeCell" rowHeight="150" id="o4i-D0-aEH" customClass="RecipesTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="RecipeCell" rowHeight="200" id="o4i-D0-aEH" customClass="RecipesTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o4i-D0-aEH" id="ewi-LR-JKS">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dth-JD-uFd">
@@ -133,20 +133,20 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2C-Mr-oHY">
-                                                    <rect key="frame" x="20" y="70" width="320" height="69"/>
+                                                    <rect key="frame" x="20" y="70" width="320" height="119"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uUE-ua-bp1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyI-NV-l9n">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="34.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.666666666666664"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mozzarella, Basil, Large tomato" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd4-2f-7LE">
-                                                                    <rect key="frame" x="0.0" y="34.666666666666671" width="320" height="34.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="59.666666666666657" width="320" height="59.333333333333343"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -315,7 +315,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goToRecipesList:" destination="Ivv-Ei-TJn" eventType="touchUpInside" id="X6J-U3-bHX"/>
-                                    <segue destination="nBm-Hs-jyu" kind="show" identifier="Reciplease" id="2f0-FS-kkP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -345,6 +344,7 @@
                         <outlet property="clearIngredientListButton" destination="hO3-wU-mbK" id="mf0-Mz-Tji"/>
                         <outlet property="ingredientTableView" destination="aH9-XK-PEE" id="eqd-w1-XqD"/>
                         <outlet property="ingredientsTextField" destination="kVW-Xm-NZG" id="EE1-1I-Ssx"/>
+                        <segue destination="nBm-Hs-jyu" kind="show" identifier="SegueReciplease" id="mAO-uk-eoh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a6-yF-AHD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

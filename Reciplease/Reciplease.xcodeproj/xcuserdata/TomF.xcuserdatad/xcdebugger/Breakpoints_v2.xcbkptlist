@@ -215,7 +215,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4AFD8D0F-02AA-4DDD-B8C4-7824B29645BD"
+            uuid = "3EDA8E46-F98F-41A9-B858-3A2F6D4DE4AE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -231,49 +231,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AD2547BA-796F-4C2F-AD05-B3CA5098C8F7"
+            uuid = "FC456437-E87C-47E0-B0BC-81B432A46FF0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reciplease/Controller/SearchViewController.swift"
+            filePath = "Reciplease/Controller/RecipesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "AD2547BA-796F-4C2F-AD05-B3CA5098C8F7 - cdef5fbcf10c1958"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Reciplease.SearchViewController.prepare(for: __C.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "Reciplease"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/Reciplease/Controller/SearchViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "624">
-               </Location>
-               <Location
-                  uuid = "AD2547BA-796F-4C2F-AD05-B3CA5098C8F7 - cdef5fbcf10c1958"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Reciplease.SearchViewController.prepare(for: __C.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "Reciplease"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/Reciplease/Controller/SearchViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "676">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

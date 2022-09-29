@@ -52,12 +52,17 @@ extension RecipesViewController: UITableViewDataSource {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width + 50, height: cell.frame.height))
         imageView.contentMode = .scaleAspectFill
         
-        let image = UIImage(named: recipe?.recipe.images.regular.url ?? "")
-        imageView.image = image
+        let imageURL = URL(string: recipe?.recipe.images.regular.url ?? "")
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: imageURL!)
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: data!)
+            }
+        }
         
         let gradient = CAGradientLayer()
         gradient.frame = imageView.bounds
-        let startColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0).cgColor
+        let startColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
         let endColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         gradient.colors = [startColor, endColor]
         imageView.layer.insertSublayer(gradient, at: 0)

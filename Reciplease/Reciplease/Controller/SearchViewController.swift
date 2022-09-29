@@ -51,7 +51,7 @@ class SearchViewController: UIViewController {
             switch result {
             case .success(let recipes):
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "Reciplease", sender: recipes)
+                    self.performSegue(withIdentifier: "SegueReciplease", sender: recipes)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -62,8 +62,8 @@ class SearchViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Reciplease" {
-            let recipesVC = segue.description as? RecipesViewController
+        if segue.identifier == "SegueReciplease" {
+            let recipesVC = segue.destination as? RecipesViewController
             let recipes = sender as? Recipes
             recipesVC?.recipes = recipes
         }
