@@ -25,7 +25,7 @@ class RecipesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(like: Int, time: Int, title: String, subtitle: String) {
+    func configure(like: Int, time: Double, title: String, subtitle: String) {
         likeLabel.text = String(like)
         timeLabel.text = String(time)
         subTitleLabel.text = subtitle

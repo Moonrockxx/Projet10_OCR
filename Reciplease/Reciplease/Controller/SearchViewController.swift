@@ -35,9 +35,14 @@ class SearchViewController: UIViewController {
         
         let array = ingredientNames.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespacesAndNewlines)) }
         array.forEach { name in
-            let ingredient = IngredientSamples(name: name)
+            let ingredient = Ingredients(name: name)
             self.ingredients.append(name)
-            IngredientService.shared.add(ingredient: ingredient)
+            do {
+                try IngredientService.shared.add(ingredient: ingredient)
+            } catch {
+                print(error)
+            }
+            
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

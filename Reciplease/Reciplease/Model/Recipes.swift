@@ -7,124 +7,81 @@
 
 import Foundation
 
-// MARK: - Recipes
 struct Recipes: Codable {
-    let from, to, count: Int
-    let links: WelcomeLinks
-    let hits: [Hit]
+    var from: Int?
+    var to: Int?
+    var count: Int?
+    var links: Links?
+    var hits: [Hit]?
     
     enum CodingKeys: String, CodingKey {
-        case from, to, count
+        case from
+        case to
+        case count
         case links = "_links"
         case hits
     }
 }
 
-// MARK: - Hit
+struct Links: Codable {
+    var next: Link?
+}
+
+struct Link: Codable {
+    var href: String?
+    var title: String?
+}
+
 struct Hit: Codable {
-    let recipe: Recipe
-    let links: HitLinks
+    var recipe: Recipe?
+    var link: SelfLinks?
     
     enum CodingKeys: String, CodingKey {
         case recipe
-        case links = "_links"
+        case link = "_links"
     }
 }
 
-// MARK: - HitLinks
-struct HitLinks: Codable {
-    let linksSelf: Next
+struct SelfLinks: Codable {
+    var selfLink: SelfLink?
     
     enum CodingKeys: String, CodingKey {
-        case linksSelf = "self"
+        case selfLink = "self"
     }
 }
 
-// MARK: - Next
-struct Next: Codable {
-    let href: String
-    let title: Title
+struct SelfLink: Codable {
+    var title: String?
+    var href: String?
 }
 
-enum Title: String, Codable {
-    case nextPage = "Next page"
-    case titleSelf = "Self"
-}
-
-// MARK: - Recipe
 struct Recipe: Codable {
-    let uri: String
-    let label: String
-    let image: String
-    let images: Images
-    let source: String
-    let url: String
-    let shareAs: String
-    let yield: Int
-    let dietLabels: [DietLabel]
-    let healthLabels: [String]
-    let cautions: [Caution]
-    let ingredientLines: [String]
-    let ingredients: [Ingredient]
-    let calories, totalWeight: Double
-    let totalTime: Int
-    let cuisineType: [String]
-    let mealType: [MealType]
-    let dishType: [String]
-    let totalNutrients, totalDaily: [String: Total]
-    let digest: [Digest]
+    var uri: String?
+    var label: String?
+    var image: String?
+    var images: Images?
+    var source: String?
+    var url: String?
+    var shareAs: String?
+    var yield: Double?
+    var dietLabels: [String]?
+    var healthLabels: [String]?
+    var cautions: [String]?
+    var ingredientLines: [String]?
+    var ingredients: [Ingredient]?
+    var calories: Double?
+    var totalWeight: Double?
+    var totalTime: Double?
+    var cuisineType: [String]?
+    var mealType: [String]?
+    var dishType: [String]?
 }
 
-enum Caution: String, Codable {
-    case fodmap = "FODMAP"
-    case gluten = "Gluten"
-    case sulfites = "Sulfites"
-    case treeNuts = "Tree-Nuts"
-    case wheat = "Wheat"
-}
-
-enum DietLabel: String, Codable {
-    case balanced = "Balanced"
-    case highFiber = "High-Fiber"
-    case lowCarb = "Low-Carb"
-    case lowSodium = "Low-Sodium"
-}
-
-// MARK: - Digest
-struct Digest: Codable {
-    let label, tag: String
-    let schemaOrgTag: SchemaOrgTag?
-    let total: Double
-    let hasRDI: Bool
-    let daily: Double
-    let unit: Unit
-    let sub: [Digest]?
-}
-
-enum SchemaOrgTag: String, Codable {
-    case carbohydrateContent = "carbohydrateContent"
-    case cholesterolContent = "cholesterolContent"
-    case fatContent = "fatContent"
-    case fiberContent = "fiberContent"
-    case proteinContent = "proteinContent"
-    case saturatedFatContent = "saturatedFatContent"
-    case sodiumContent = "sodiumContent"
-    case sugarContent = "sugarContent"
-    case transFatContent = "transFatContent"
-}
-
-enum Unit: String, Codable {
-    case empty = "%"
-    case g = "g"
-    case kcal = "kcal"
-    case mg = "mg"
-    case µg = "µg"
-}
-
-// MARK: - Images
 struct Images: Codable {
-    let thumbnail, small, regular: Large
-    let large: Large?
+    var thumbnail: Image?
+    var small: Image?
+    var regular: Image?
+    var large: Image?
     
     enum CodingKeys: String, CodingKey {
         case thumbnail = "THUMBNAIL"
@@ -134,43 +91,19 @@ struct Images: Codable {
     }
 }
 
-// MARK: - Large
-struct Large: Codable {
-    let url: String
-    let width, height: Int
+struct Image: Codable {
+    var url: String?
+    var width: Int?
+    var height: Int?
 }
 
-// MARK: - Ingredient
 struct Ingredient: Codable {
-    let text: String
-    let quantity: Double
-    let measure: String?
-    let food: String
-    let weight: Double
-    let foodCategory: String?
-    let foodID: String
-    let image: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case text, quantity, measure, food, weight, foodCategory
-        case foodID = "foodId"
-        case image
-    }
+    var text: String?
+    var quantity: Double?
+    var measure: String?
+    var food: String?
+    var weight: Double?
+    var foodCategory: String?
+    var foodId: String?
+    var image: String?
 }
-
-enum MealType: String, Codable {
-    case lunchDinner = "lunch/dinner"
-}
-
-// MARK: - Total
-struct Total: Codable {
-    let label: String
-    let quantity: Double
-    let unit: Unit
-}
-
-// MARK: - WelcomeLinks
-struct WelcomeLinks: Codable {
-    let next: Next
-}
-

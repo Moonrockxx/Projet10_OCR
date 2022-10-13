@@ -33,21 +33,41 @@ class APIService {
         self.manager = manager
     }
     
+    func makeURL(ingredients: [String]) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.edamam.com"
+        components.path = "/api/recipes/v2"
+        components.queryItems = [
+            URLQueryItem(name: "type", value: "public"),
+            URLQueryItem(name: "app_id", value: "b249e3df"),
+            URLQueryItem(name: "app_key", value: "2aa7376e982fbc0f0f0f88c4b59ff6ae"),
+            URLQueryItem(name: "time", value: "10-60"),
+            URLQueryItem(name: "imageSize", value: "REGULAR"),
+            URLQueryItem(name: "q", value: ingredients.map({$0.replacingOccurrences(of: " ", with: "%20")}).joined(separator: ","))
+        ]
+        
+        guard let url = components.url else {
+            return URL(string: "")!
+        }
+        
+        return url
+    }
+    
     func getRecipes(ingredients: [String], completion: @escaping (Result<Recipes, APIError>) -> Void) {
-        
-        let ingredientsList = ingredients.map({$0.replacingOccurrences(of: " ", with: "%20")}).joined(separator: ",")
-        
-        manager.request("https://api.edamam.com/api/recipes/v2?type=public&app_id=b249e3df&app_key=2aa7376e982fbc0f0f0f88c4b59ff6ae&time=10-60&imageSize=REGULAR&q=cheese,tomatoes,mustard")
+        manager.request(makeURL(ingredients: ingredients))
             .validate(statusCode: 200..<299)
             .responseData { response in
                 switch response.result {
                 case .success(let recipes):
                     switch response.response?.statusCode {
                     case 200:
-                        guard let recipes = try? JSONDecoder().decode(Recipes.self, from: recipes) else {
-                            return
+                        do {
+                            let recipes = try JSONDecoder().decode(Recipes.self, from: recipes)
+                            completion(.success(recipes))
+                        } catch {
+                            print(error)
                         }
-                        completion(.success(recipes))
                     case 400,404:
                         completion(.failure(.network))
                     case 500,502,503:

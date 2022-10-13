@@ -11,8 +11,13 @@
 		60458C1528E487DC009ADE7F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60458C1428E487DC009ADE7F /* APIService.swift */; };
 		60458C1728E4996C009ADE7F /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60458C1628E4996C009ADE7F /* Recipes.swift */; };
 		60458C1A28E4A1A8009ADE7F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60458C1928E4A1A8009ADE7F /* ViewController+Extension.swift */; };
+		60458C1E28E59F2F009ADE7F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 60458C1D28E59F2F009ADE7F /* SDWebImage */; };
+		60458C2028E59F2F009ADE7F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 60458C1F28E59F2F009ADE7F /* SDWebImageMapKit */; };
+		6056C18028F809C800238CA3 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6056C17F28F809C800238CA3 /* IngredientService.swift */; };
+		6056C18428F809F400238CA3 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6056C18328F809F400238CA3 /* Ingredients.swift */; };
 		6065FD2428DCB2C700E885B2 /* RecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065FD2328DCB2C700E885B2 /* RecipesTableViewCell.swift */; };
 		6065FD2628DCB99F00E885B2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065FD2528DCB99F00E885B2 /* GradientView.swift */; };
+		6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */; };
 		60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5C28D9F5A2002321AC /* AppDelegate.swift */; };
 		60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5E28D9F5A2002321AC /* SceneDelegate.swift */; };
 		60A2CB6428D9F5A2002321AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60A2CB6228D9F5A2002321AC /* Main.storyboard */; };
@@ -23,9 +28,6 @@
 		60A2CB8028D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */; };
 		60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9028D9FE9F002321AC /* SearchViewController.swift */; };
 		60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */; };
-		60A2CB9628DA0FFE002321AC /* Ingredient.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */; };
-		60A2CB9828DA1010002321AC /* IngredientService.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */; };
-		60A2CB9C28DB6A28002321AC /* Recipes.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9B28DB6A28002321AC /* Recipes.Sample.swift */; };
 		60A2CB9E28DB6C78002321AC /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,8 +52,11 @@
 		60458C1428E487DC009ADE7F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		60458C1628E4996C009ADE7F /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		60458C1928E4A1A8009ADE7F /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		6056C17F28F809C800238CA3 /* IngredientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
+		6056C18328F809F400238CA3 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		6065FD2328DCB2C700E885B2 /* RecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewCell.swift; sourceTree = "<group>"; };
 		6065FD2528DCB99F00E885B2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 		60A2CB5928D9F5A2002321AC /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A2CB5C28D9F5A2002321AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60A2CB5E28D9F5A2002321AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,9 +71,6 @@
 		60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		60A2CB9028D9FE9F002321AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.Sample.swift; sourceTree = "<group>"; };
-		60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientService.Sample.swift; sourceTree = "<group>"; };
-		60A2CB9B28DB6A28002321AC /* Recipes.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.Sample.swift; sourceTree = "<group>"; };
 		60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60458C1E28E59F2F009ADE7F /* SDWebImage in Frameworks */,
+				60458C2028E59F2F009ADE7F /* SDWebImageMapKit in Frameworks */,
 				60458C1228E486F7009ADE7F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,8 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				60458C1328E48793009ADE7F /* API */,
-				60A2CB9428DA0FE4002321AC /* Samples */,
 				60458C1628E4996C009ADE7F /* Recipes.swift */,
+				6056C17F28F809C800238CA3 /* IngredientService.swift */,
+				6056C18328F809F400238CA3 /* Ingredients.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				60A2CB9028D9FE9F002321AC /* SearchViewController.swift */,
 				60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */,
 				60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */,
+				6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,16 +217,6 @@
 				60A2CB6528D9F5A3002321AC /* Assets.xcassets */,
 			);
 			path = "Supported Files";
-			sourceTree = "<group>";
-		};
-		60A2CB9428DA0FE4002321AC /* Samples */ = {
-			isa = PBXGroup;
-			children = (
-				60A2CB9528DA0FFE002321AC /* Ingredient.Sample.swift */,
-				60A2CB9728DA1010002321AC /* IngredientService.Sample.swift */,
-				60A2CB9B28DB6A28002321AC /* Recipes.Sample.swift */,
-			);
-			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +237,8 @@
 			name = Reciplease;
 			packageProductDependencies = (
 				60458C1128E486F7009ADE7F /* Alamofire */,
+				60458C1D28E59F2F009ADE7F /* SDWebImage */,
+				60458C1F28E59F2F009ADE7F /* SDWebImageMapKit */,
 			);
 			productName = Reciplease;
 			productReference = 60A2CB5928D9F5A2002321AC /* Reciplease.app */;
@@ -316,6 +314,7 @@
 			mainGroup = 60A2CB5028D9F5A2002321AC;
 			packageReferences = (
 				60458C1028E486F7009ADE7F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 60A2CB5A28D9F5A2002321AC /* Products */;
 			projectDirPath = "";
@@ -361,16 +360,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A2CB9E28DB6C78002321AC /* RecipesViewController.swift in Sources */,
+				6056C18028F809C800238CA3 /* IngredientService.swift in Sources */,
 				60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */,
 				6065FD2628DCB99F00E885B2 /* GradientView.swift in Sources */,
+				6056C18428F809F400238CA3 /* Ingredients.swift in Sources */,
+				6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */,
 				6065FD2428DCB2C700E885B2 /* RecipesTableViewCell.swift in Sources */,
 				60458C1528E487DC009ADE7F /* APIService.swift in Sources */,
 				60458C1A28E4A1A8009ADE7F /* ViewController+Extension.swift in Sources */,
-				60A2CB9C28DB6A28002321AC /* Recipes.Sample.swift in Sources */,
 				60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */,
 				60458C1728E4996C009ADE7F /* Recipes.swift in Sources */,
-				60A2CB9628DA0FFE002321AC /* Ingredient.Sample.swift in Sources */,
-				60A2CB9828DA1010002321AC /* IngredientService.Sample.swift in Sources */,
 				60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */,
 				60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */,
 			);
@@ -732,6 +731,14 @@
 				minimumVersion = 5.6.1;
 			};
 		};
+		60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -739,6 +746,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 60458C1028E486F7009ADE7F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		60458C1D28E59F2F009ADE7F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		60458C1F28E59F2F009ADE7F /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

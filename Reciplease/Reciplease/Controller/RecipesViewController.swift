@@ -6,23 +6,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipesViewController: UIViewController {
 
     @IBOutlet weak var recipesTableView: UITableView!
     public var recipes: Recipes?
     
-    init(recipes: Recipes) {
-        super.init(nibName: nil, bundle: nil)
-        self.recipes = recipes
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueRecipeDetail" {
+            let detailVC = segue.destination as? RecipeDetailsViewController
+            let hit = sender as? Hit
+            detailVC?.hit = hit
+        }
     }
 }
 
@@ -32,7 +32,7 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = self.recipes?.hits.count else {
+        guard let count = self.recipes?.hits?.count else {
             return 0
         }
         return count
@@ -43,22 +43,15 @@ extension RecipesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let recipe = recipes?.hits[indexPath.row]
+        let recipe = recipes?.hits?[indexPath.row]
         cell.configure(like: Int.random(in: 1..<5000),
-                       time: recipe?.recipe.totalTime ?? 0,
-                       title: recipe?.recipe.label ?? "N/A",
-                       subtitle: recipe?.recipe.ingredientLines.joined(separator: ", ") ?? "N/A")
+                       time: recipe?.recipe?.totalTime ?? 0,
+                       title: recipe?.recipe?.label ?? "N/A",
+                       subtitle: recipe?.recipe?.ingredientLines?.joined(separator: ", ") ?? "N/A")
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width + 50, height: cell.frame.height))
+        imageView.sd_setImage(with: URL(string: recipe?.recipe?.images?.regular?.url ?? ""))
         imageView.contentMode = .scaleAspectFill
-        
-        let imageURL = URL(string: recipe?.recipe.images.regular.url ?? "")
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: imageURL!)
-            DispatchQueue.main.async {
-                imageView.image = UIImage(data: data!)
-            }
-        }
         
         let gradient = CAGradientLayer()
         gradient.frame = imageView.bounds
@@ -74,4 +67,8 @@ extension RecipesViewController: UITableViewDataSource {
     }
 }
 
-
+extension RecipesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "segueRecipeDetail", sender: recipes?.hits?[indexPath.row])
+    }
+}
