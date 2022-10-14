@@ -8,19 +8,7 @@
 import Foundation
 
 extension Recipe {
-    func toRecipe() -> RecipeDetail {
-//        guard let image = URL(string: self.images?.regular?.url ?? "") else {
-//            return RecipeDetail()
-//        }
-        
-//        var imageData: Data?
-//
-//        DispatchQueue.global(qos: .background).async {
-//            if let data = try? Data(contentsOf: image) {
-//                imageData = data
-//            }
-//        }
-        
+    func toRecipe() -> RecipeDetail {        
         var ingredientList: [String] = []
         guard let ingredientLines = self.ingredientLines else { return RecipeDetail() }
         for line in ingredientLines {

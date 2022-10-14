@@ -10,32 +10,46 @@ import SDWebImage
 
 class RecipeDetailsViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIView!
-    public var hit: Hit?
+    @IBOutlet weak var recipeDetailImageAndTitleVIew: UIView!
+    @IBOutlet weak var recipeDetailImage: UIImageView!
+    @IBOutlet weak var recipeDetailTitle: UILabel!
+    public var recipeDetails: RecipeDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.makeView()
     }
     
+    func makeView() {
+        self.recipeDetailTitle.text = recipeDetails?.title
+        self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
+        self.recipeDetailImage.contentMode = .scaleAspectFill
+        
+        let gradient = CAGradientLayer()
+        let startColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0).cgColor
+        let endColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1).cgColor
+        gradient.frame = CGRectMake(0, 0, recipeDetailImage.frame.width + 30, recipeDetailImage.frame.height + 30)
+        gradient.colors = [startColor, endColor]
+        recipeDetailImage.layer.insertSublayer(gradient, at: 0)
+    }
 }
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = hit?.recipe?.ingredientLines?.count else {
-            return 0
-        }
-        
+        guard let count = recipeDetails?.detailIngredients?.count else { return 0 }
         return count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientLineCell", for: indexPath)
-        let ingredient = hit?.recipe?.ingredientLines?[indexPath.row]
-        cell.textLabel?.text = ingredient
+        if let line = recipeDetails?.detailIngredients?[indexPath.row] {
+            cell.textLabel?.text = "- " + line
+            cell.textLabel?.textColor = UIColor.white
+        }
         
         return cell
     }

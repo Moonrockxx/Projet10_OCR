@@ -66,7 +66,7 @@ extension RecipesViewController: UITableViewDataSource {
         }
         
         let recipe = recipes[indexPath.row]
-        cell.configure(like: String(describing: recipe?.like),
+        cell.configure(like: "\(recipe?.like ?? 0)",
                        time: ((recipe?.time ?? 0) * 60).timeAsString(style: .abbreviated),
                        title: recipe?.title,
                        subtitle: recipe?.subtitle,
@@ -74,5 +74,18 @@ extension RecipesViewController: UITableViewDataSource {
                        uri: recipe?.uri)
         
         return cell
+    }
+}
+
+extension RecipesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < recipes.count {
+            let recipe = recipes[indexPath.row]
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailsVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailsViewController") as! RecipeDetailsViewController
+            detailsVC.recipeDetails = recipe
+            
+            self.navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
 }
