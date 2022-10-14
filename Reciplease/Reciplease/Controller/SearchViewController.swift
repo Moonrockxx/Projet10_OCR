@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var addIngredientButton: UIButton!
     @IBOutlet weak var ingredientTableView: UITableView!
@@ -19,7 +19,13 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueReciplease" {
+            _ = segue.destination as? RecipesViewController
+        }
+    }
+    
     @IBAction func dismissKeyboard(_ sender: Any) {
         ingredientsTextField.resignFirstResponder()
     }
@@ -31,52 +37,32 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func addIngredient(_ sender: Any) {
-        guard let ingredientNames = ingredientsTextField.text else { return }
+        guard let ingredientName = ingredientsTextField.text else {
+            presentAlert(vc: self, title: "Error", message: "Field can't be blank")
+            return
+        }
+
+        let ingredient = Ingredients(name: ingredientName)
         
-        let array = ingredientNames.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespacesAndNewlines)) }
-        array.forEach { name in
-            let ingredient = Ingredients(name: name)
-            self.ingredients.append(name)
-            do {
-                try IngredientService.shared.add(ingredient: ingredient)
-            } catch {
-                print(error)
-            }
-            
+        do {
+            try IngredientService.shared.add(ingredient: ingredient)
+        } catch IngredientError.doublon {
+            presentAlert(vc: self, title: "Error", message: "You can't add an ingredient twice")
+        } catch {
+            presentAlert(vc: self, title: "Error", message: "Adding the ingredient failed")
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.ingredientTableView.reloadData()
-            self.ingredientsTextField.text = ""
-        }
+        self.ingredientTableView.reloadData()
+        self.ingredientsTextField.text = ""
     }
     
     @IBAction func goToRecipesList(_ sender: Any) {
-        APIService.shared.getRecipes(ingredients: ingredients) { result in
-            switch result {
-            case .success(let recipes):
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "SegueReciplease", sender: recipes)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.presentAlert(title: "Error", message: error.description)
-                }
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SegueReciplease" {
-            let recipesVC = segue.destination as? RecipesViewController
-            let recipes = sender as? Recipes
-            recipesVC?.recipes = recipes
-        }
+        self.performSegue(withIdentifier: "SegueReciplease", sender: ingredients)
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -103,16 +89,11 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-       if editingStyle == .delete {
-           IngredientService.shared.remove(at: indexPath.row)
-           tableView.deleteRows(at: [indexPath], with: .automatic)
-       }
+        if editingStyle == .delete {
+            IngredientService.shared.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 
-extension String {
-    func trimmingLeadingAndTrailingSpaces(using characterSet: CharacterSet = .whitespacesAndNewlines) -> String {
-        return trimmingCharacters(in: characterSet)
-    }
-}
+

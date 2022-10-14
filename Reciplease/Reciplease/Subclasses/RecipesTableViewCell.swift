@@ -6,29 +6,46 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    let gradient = CAGradientLayer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let startColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        let endColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        gradient.frame = recipeImage.bounds
+        gradient.colors = [startColor, endColor]
+        recipeImage.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradient.frame = bounds
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
-    func configure(like: Int, time: Double, title: String, subtitle: String) {
-        likeLabel.text = String(like)
-        timeLabel.text = String(time)
+    func configure(like: String?, time: String?, title: String?, subtitle: String?, image: String?, uri: String?) {
+        likeLabel.text = "\(like!)"
+        timeLabel.text = "\(time!)"
         subTitleLabel.text = subtitle
         titleLabel.text = title
+        
+        recipeImage.contentMode = .scaleAspectFill
+        recipeImage.sd_setImage(with: URL(string: image ?? ""))
+        
+        
     }
 }

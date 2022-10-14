@@ -29,11 +29,17 @@ class APIService {
     static let shared = APIService()
     private let manager: Session
     
+    var ingredientsArray: [String] = []
+    
     init(manager: Session = Session.default) {
         self.manager = manager
     }
     
-    func makeURL(ingredients: [String]) -> URL {
+    func makeURL() -> URL {
+        for ingredient in IngredientService.shared.ingredients {
+            ingredientsArray.append(ingredient.name)
+        }
+        
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.edamam.com"
@@ -44,7 +50,7 @@ class APIService {
             URLQueryItem(name: "app_key", value: "2aa7376e982fbc0f0f0f88c4b59ff6ae"),
             URLQueryItem(name: "time", value: "10-60"),
             URLQueryItem(name: "imageSize", value: "REGULAR"),
-            URLQueryItem(name: "q", value: ingredients.map({$0.replacingOccurrences(of: " ", with: "%20")}).joined(separator: ","))
+            URLQueryItem(name: "q", value: ingredientsArray.joined(separator: ","))
         ]
         
         guard let url = components.url else {
@@ -54,8 +60,8 @@ class APIService {
         return url
     }
     
-    func getRecipes(ingredients: [String], completion: @escaping (Result<Recipes, APIError>) -> Void) {
-        manager.request(makeURL(ingredients: ingredients))
+    func getRecipes(completion: @escaping (Result<Recipes, APIError>) -> Void) {
+        manager.request(makeURL())
             .validate(statusCode: 200..<299)
             .responseData { response in
                 switch response.result {
@@ -67,6 +73,7 @@ class APIService {
                             completion(.success(recipes))
                         } catch {
                             print(error)
+                            completion(.failure(.decoding))
                         }
                     case 400,404:
                         completion(.failure(.network))
@@ -81,3 +88,4 @@ class APIService {
             }
     }
 }
+

@@ -10,18 +10,39 @@ import SDWebImage
 
 class RecipesViewController: UIViewController {
 
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var recipesTableView: UITableView!
-    public var recipes: Recipes?
+    
+    var recipes: [RecipeDetail?] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.recipesTableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getRecipes()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueRecipeDetail" {
-            let detailVC = segue.destination as? RecipeDetailsViewController
-            let hit = sender as? Hit
-            detailVC?.hit = hit
+    func getRecipes() {
+        APIService.shared.getRecipes { result in
+            switch result {
+            case .success(let recipes):
+                let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
+                guard recipes?.count == 0 else {
+                    self.recipes = recipes ?? []
+                    self.loader.isHidden = true
+                    self.recipesTableView.isHidden = false
+                    return
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.presentAlert(vc: self, title: "Error", message: error.description)
+                }
+            }
         }
     }
 }
@@ -32,10 +53,7 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = self.recipes?.hits?.count else {
-            return 0
-        }
-        return count
+        return recipes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,32 +61,18 @@ extension RecipesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let recipe = recipes?.hits?[indexPath.row]
-        cell.configure(like: Int.random(in: 1..<5000),
-                       time: recipe?.recipe?.totalTime ?? 0,
-                       title: recipe?.recipe?.label ?? "N/A",
-                       subtitle: recipe?.recipe?.ingredientLines?.joined(separator: ", ") ?? "N/A")
+        guard indexPath.row < recipes.count else {
+            return cell
+        }
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width + 50, height: cell.frame.height))
-        imageView.sd_setImage(with: URL(string: recipe?.recipe?.images?.regular?.url ?? ""))
-        imageView.contentMode = .scaleAspectFill
-        
-        let gradient = CAGradientLayer()
-        gradient.frame = imageView.bounds
-        let startColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
-        let endColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        gradient.colors = [startColor, endColor]
-        imageView.layer.insertSublayer(gradient, at: 0)
-        
-        cell.backgroundView = UIView()
-        cell.backgroundView!.addSubview(imageView)
+        let recipe = recipes[indexPath.row]
+        cell.configure(like: String(describing: recipe?.like),
+                       time: ((recipe?.time ?? 0) * 60).timeAsString(style: .abbreviated),
+                       title: recipe?.title,
+                       subtitle: recipe?.subtitle,
+                       image: recipe?.image,
+                       uri: recipe?.uri)
         
         return cell
-    }
-}
-
-extension RecipesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "segueRecipeDetail", sender: recipes?.hits?[indexPath.row])
     }
 }
