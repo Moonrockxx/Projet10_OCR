@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: RecipeDetail
 struct RecipeDetail {
     var title: String?
     var subtitle: String?
