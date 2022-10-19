@@ -31,8 +31,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func clearList(_ sender: Any) {
-        IngredientService.shared.removeAll()
-        ingredientTableView.dataSource = nil
+        IngredientService.shared.removeIngredients()
         ingredientTableView.reloadData()
     }
     

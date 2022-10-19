@@ -34,8 +34,8 @@ class IngredientService {
         ingredientArray.remove(at: index)
     }
     
-    func removeAll() {
-        ingredients = []
-        ingredientArray = []
+    func removeIngredients() {
+        ingredients.removeAll()
+        ingredientArray.removeAll()
     }
 }

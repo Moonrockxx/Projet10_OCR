@@ -31,11 +31,13 @@ class RecipesViewController: UIViewController {
             switch result {
             case .success(let recipes):
                 let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
-                guard recipes?.count == 0 else {
+                
+                if recipes?.count == 0 {
+                    self.presentAlert(vc: self, title: "Something went wrong", message: "No recipes found")
+                } else {
                     self.recipes = recipes ?? []
                     self.loader.isHidden = true
                     self.recipesTableView.isHidden = false
-                    return
                 }
                 
             case .failure(let error):

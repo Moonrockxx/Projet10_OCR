@@ -10,13 +10,17 @@ import Foundation
 extension Recipe {
     func toRecipe() -> RecipeDetail {        
         var ingredientList: [String] = []
+        
         guard let ingredientLines = self.ingredientLines else { return RecipeDetail() }
+        
         for line in ingredientLines {
             ingredientList.append(line)
         }
         
         var instructionList: [String] = []
+        
         guard let instructionLines = self.ingredients else { return RecipeDetail() }
+        
         for line in instructionLines {
             instructionList.append(line.food ?? "")
         }
