@@ -10,6 +10,8 @@ import SDWebImage
 
 class RecipeDetailsViewController: UIViewController {
 
+    @IBOutlet weak var recipeDetailsTimeLabel: UILabel!
+    @IBOutlet weak var recipeDetailLikeLabel: UILabel!
     @IBOutlet weak var recipeDetailImageAndTitleVIew: UIView!
     @IBOutlet weak var recipeDetailImage: UIImageView!
     @IBOutlet weak var recipeDetailTitle: UILabel!
@@ -24,6 +26,8 @@ class RecipeDetailsViewController: UIViewController {
         self.recipeDetailTitle.text = recipeDetails?.title
         self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
         self.recipeDetailImage.contentMode = .scaleAspectFill
+        self.recipeDetailLikeLabel.text = "\(recipeDetails?.like ?? 0)"
+        self.recipeDetailsTimeLabel.text = ((recipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)
         
         let gradient = CAGradientLayer()
         let startColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0).cgColor
