@@ -33,7 +33,9 @@ class RecipesViewController: UIViewController {
                 let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
                 
                 if recipes?.count == 0 {
-                    self.presentAlert(vc: self, title: "Something went wrong", message: "No recipes found")
+                    self.presentAlert(title: "Something went wrong", message: "No recipes found", handler: { _ in
+                        self.navigationController?.popViewController(animated: true)
+                    })
                 } else {
                     self.recipes = recipes ?? []
                     self.loader.isHidden = true
@@ -42,7 +44,9 @@ class RecipesViewController: UIViewController {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.presentAlert(vc: self, title: "Error", message: error.description)
+                    self.presentAlert(title: "Error", message: error.description, handler: { _ in
+                        self.navigationController?.popViewController(animated: true)
+                    })
                 }
             }
         }

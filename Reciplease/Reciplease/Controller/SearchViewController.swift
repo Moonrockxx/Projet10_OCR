@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func addIngredient(_ sender: Any) {
         guard let ingredientName = ingredientsTextField.text else {
-            presentAlert(vc: self, title: "Error", message: "Field can't be blank")
+            presentAlert(title: "Error", message: "Field can't be blank")
             return
         }
 
@@ -46,9 +46,9 @@ class SearchViewController: UIViewController {
         do {
             try IngredientService.shared.add(ingredient: ingredient)
         } catch IngredientError.doublon {
-            presentAlert(vc: self, title: "Error", message: "You can't add an ingredient twice")
+            presentAlert(title: "Error", message: "You can't add an ingredient twice")
         } catch {
-            presentAlert(vc: self, title: "Error", message: "Adding the ingredient failed")
+            presentAlert(title: "Error", message: "Adding the ingredient failed")
         }
         
         self.ingredientTableView.reloadData()
