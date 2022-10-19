@@ -9,32 +9,44 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var addIngredientButton: UIButton!
     @IBOutlet weak var ingredientTableView: UITableView!
     @IBOutlet weak var clearIngredientListButton: UIButton!
     
+    //MARK: Variables
     private var ingredients: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    /// Function that prepare a segue
+    /// - Parameters:
+    ///   - segue: The segue targeted
+    ///   - sender: An any sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueReciplease" {
             _ = segue.destination as? RecipesViewController
         }
     }
     
+    /// Function used to dismiss the keyboard when the screen is tapped
+    /// - Parameter sender: An any sender
     @IBAction func dismissKeyboard(_ sender: Any) {
         ingredientsTextField.resignFirstResponder()
     }
     
+    /// Function used to clear the table view when the clear button is tapped
+    /// - Parameter sender: An any sender
     @IBAction func clearList(_ sender: Any) {
         IngredientService.shared.removeIngredients()
         ingredientTableView.reloadData()
     }
     
+    /// Function used to add an ingredient to the IngredientService ingredient and ingredientArray arrays, returns an error in case of empty textfield or duplicate ingredient, updates the view table and resets the textfield.
+    /// - Parameter sender: An any sender
     @IBAction func addIngredient(_ sender: Any) {
         guard let ingredientName = ingredientsTextField.text else {
             presentAlert(title: "Error", message: "Field can't be blank")
@@ -55,6 +67,8 @@ class SearchViewController: UIViewController {
         self.ingredientsTextField.text = ""
     }
     
+    /// Triggers the segue targeted
+    /// - Parameter sender: An any sender
     @IBAction func goToRecipesList(_ sender: Any) {
         self.performSegue(withIdentifier: "SegueReciplease", sender: ingredients)
     }

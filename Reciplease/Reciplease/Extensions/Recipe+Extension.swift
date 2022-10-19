@@ -8,6 +8,8 @@
 import Foundation
 
 extension Recipe {
+    /// Function used to transform a Recipes object to a RecipeDetail object
+    /// - Returns: A RecipeDetails object
     func toRecipe() -> RecipeDetail {        
         var ingredientList: [String] = []
         

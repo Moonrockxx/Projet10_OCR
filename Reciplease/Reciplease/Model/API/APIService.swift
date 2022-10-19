@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+/// An enumeration for the API errors
 enum APIError: Error {
     case decoding
     case server
@@ -29,12 +30,15 @@ class APIService {
     static let shared = APIService()
     private let manager: Session
     
+    //MARK: Variables
     var ingredientsArray: [String] = []
     
     init(manager: Session = Session.default) {
         self.manager = manager
     }
     
+    /// Function used to build the url use on the getRecipes function
+    /// - Returns: URL
     func makeURL() -> URL {
         for ingredient in IngredientService.shared.ingredients {
             ingredientsArray.append(ingredient.name)
@@ -60,6 +64,8 @@ class APIService {
         return url
     }
     
+    /// Function used to get the recipes
+    /// - Parameter completion: A Result that gives a Recipes when success or an APIError when failure
     func getRecipes(completion: @escaping (Result<Recipes, APIError>) -> Void) {
         manager.request(makeURL())
             .validate(statusCode: 200..<299)

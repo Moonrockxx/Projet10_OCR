@@ -10,11 +10,14 @@ import SDWebImage
 
 class RecipeDetailsViewController: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var recipeDetailsTimeLabel: UILabel!
     @IBOutlet weak var recipeDetailLikeLabel: UILabel!
     @IBOutlet weak var recipeDetailImageAndTitleVIew: UIView!
     @IBOutlet weak var recipeDetailImage: UIImageView!
     @IBOutlet weak var recipeDetailTitle: UILabel!
+    
+    //MARK: Variables
     public var recipeDetails: RecipeDetail?
     
     override func viewDidLoad() {
@@ -22,6 +25,7 @@ class RecipeDetailsViewController: UIViewController {
         self.makeView()
     }
     
+    /// Function use to create the view with the RecipeDetail object received
     func makeView() {
         self.recipeDetailTitle.text = recipeDetails?.title
         self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))

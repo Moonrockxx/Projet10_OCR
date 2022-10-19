@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Recipes
 struct Recipes: Codable {
     var from: Int?
     var to: Int?
@@ -23,15 +24,18 @@ struct Recipes: Codable {
     }
 }
 
+//MARK: Links
 struct Links: Codable {
     var next: Link?
 }
 
+//MARK: Link
 struct Link: Codable {
     var href: String?
     var title: String?
 }
 
+//MARK: Hit
 struct Hit: Codable {
     var recipe: Recipe?
     var link: SelfLinks?
@@ -42,6 +46,7 @@ struct Hit: Codable {
     }
 }
 
+//MARK: SelfLinks
 struct SelfLinks: Codable {
     var selfLink: SelfLink?
     
@@ -50,11 +55,13 @@ struct SelfLinks: Codable {
     }
 }
 
+//MARK: SelfLink
 struct SelfLink: Codable {
     var title: String?
     var href: String?
 }
 
+//MARK: Recipe
 struct Recipe: Codable {
     var uri: String?
     var label: String?
@@ -77,6 +84,7 @@ struct Recipe: Codable {
     var dishType: [String]?
 }
 
+//MARK: Images
 struct Images: Codable {
     var thumbnail: Image?
     var small: Image?
@@ -91,12 +99,14 @@ struct Images: Codable {
     }
 }
 
+//MARK: Image
 struct Image: Codable {
     var url: String?
     var width: Int?
     var height: Int?
 }
 
+//MARK: Ingredient
 struct Ingredient: Codable {
     var text: String?
     var quantity: Double?

@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Ingredients
 struct Ingredients {
     var name: String = ""
 }

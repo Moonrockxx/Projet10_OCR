@@ -10,9 +10,11 @@ import SDWebImage
 
 class RecipesViewController: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var recipesTableView: UITableView!
     
+    //MARK: Variables
     var recipes: [RecipeDetail?] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -26,6 +28,7 @@ class RecipesViewController: UIViewController {
         self.getRecipes()
     }
     
+    /// Function used to get the recipes and store them in the recipes array
     func getRecipes() {
         APIService.shared.getRecipes { result in
             switch result {

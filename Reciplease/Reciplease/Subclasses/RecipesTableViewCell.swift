@@ -10,12 +10,14 @@ import SDWebImage
 
 class RecipesTableViewCell: UITableViewCell {
 
+    //MARK: Outlets
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    //MARK: Constants
     let gradient = CAGradientLayer()
     
     override func awakeFromNib() {
@@ -36,7 +38,15 @@ class RecipesTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
+    /// Function used to configure a RecipeTableViewCell
+    /// - Parameters:
+    ///   - like: Optionnal String
+    ///   - time: Optionnal String
+    ///   - title: Optionnal String
+    ///   - subtitle: Optionnal String
+    ///   - image: Optionnal String
+    ///   - uri: Optionnal String
     func configure(like: String?, time: String?, title: String?, subtitle: String?, image: String?, uri: String?) {
         likeLabel.text = "\(like!)"
         timeLabel.text = "\(time!)"
