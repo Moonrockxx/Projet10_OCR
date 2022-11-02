@@ -383,6 +383,7 @@
                         <outlet property="recipeDetailLikeLabel" destination="07O-eO-mds" id="uKO-WU-GYT"/>
                         <outlet property="recipeDetailTitle" destination="BIj-WF-JLY" id="9bT-XE-irn"/>
                         <outlet property="recipeDetailsTimeLabel" destination="3vq-vm-xmo" id="NFz-0a-hI7"/>
+                        <outlet property="tableView" destination="QAg-z9-ul2" id="xBq-Z7-TIh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtb-dl-15W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
