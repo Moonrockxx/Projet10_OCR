@@ -22,6 +22,7 @@
 		6065FD2428DCB2C700E885B2 /* RecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065FD2328DCB2C700E885B2 /* RecipesTableViewCell.swift */; };
 		6065FD2628DCB99F00E885B2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065FD2528DCB99F00E885B2 /* GradientView.swift */; };
 		6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */; };
+		60679E552912B5E300A52697 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60679E542912B5E300A52697 /* CoreDataManager.swift */; };
 		60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5C28D9F5A2002321AC /* AppDelegate.swift */; };
 		60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5E28D9F5A2002321AC /* SceneDelegate.swift */; };
 		60A2CB6428D9F5A2002321AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60A2CB6228D9F5A2002321AC /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		6065FD2328DCB2C700E885B2 /* RecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewCell.swift; sourceTree = "<group>"; };
 		6065FD2528DCB99F00E885B2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
+		60679E542912B5E300A52697 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		60A2CB5928D9F5A2002321AC /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A2CB5C28D9F5A2002321AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60A2CB5E28D9F5A2002321AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				60B7A286291265F200932D69 /* Reciplease.xcdatamodeld */,
 				60B7A289291266D600932D69 /* SavedRecipes.swift */,
 				60B7A28B291267A700932D69 /* CoreDataStack.swift */,
+				60679E542912B5E300A52697 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				60B7A28E29126D7800932D69 /* RecipeDetailsRepository.swift in Sources */,
 				6056C18428F809F400238CA3 /* Ingredients.swift in Sources */,
 				6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */,
+				60679E552912B5E300A52697 /* CoreDataManager.swift in Sources */,
 				6065FD2428DCB2C700E885B2 /* RecipesTableViewCell.swift in Sources */,
 				60458C1528E487DC009ADE7F /* APIService.swift in Sources */,
 				6056C18A28F864FD00238CA3 /* Double+Extension.swift in Sources */,

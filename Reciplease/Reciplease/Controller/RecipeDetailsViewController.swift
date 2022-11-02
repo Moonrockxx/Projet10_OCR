@@ -20,8 +20,10 @@ class RecipeDetailsViewController: UIViewController {
     //MARK: Properties
     public var recipeDetails: RecipeDetail?
     
+    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
+    
     lazy var favoriteButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(addToFavorite))
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonTapped))
         button.tintColor = .white
         
         return button
@@ -32,17 +34,27 @@ class RecipeDetailsViewController: UIViewController {
         self.makeView()
     }
     
-    @objc func addToFavorite() {
-        
+    @objc func favoriteButtonTapped() {
+        if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
+            favoriteButton.image = UIImage(systemName: "star")
+        } else {
+            guard let recipe = self.recipeDetails else { return }
+            coreDataManager.saveRecipe(recipe: recipe)
+            favoriteButton.image = UIImage(systemName: "star.fill")
+        }
     }
     
     /// Function use to create the view with the RecipeDetail object received
     func makeView() {
         navigationItem.title = "Reciplease"
         navigationItem.rightBarButtonItem = favoriteButton
+        
+        if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
+            favoriteButton.image = UIImage(systemName: "star.fill")
+        }
+        
         self.recipeDetailTitle.text = recipeDetails?.title
         self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
-        //        self.recipeDetailImage.image = UIImage(data: recipeDetails?.image ?? Data())
         self.recipeDetailImage.contentMode = .scaleAspectFill
         self.recipeDetailLikeLabel.text = "\(recipeDetails?.like ?? 0)"
         self.recipeDetailsTimeLabel.text = ((recipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)

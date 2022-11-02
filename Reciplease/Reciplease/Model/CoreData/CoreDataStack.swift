@@ -18,6 +18,10 @@ final class CoreDataStack {
     var viewContext: NSManagedObjectContext {
         return CoreDataStack.sharedInstance.persistentContainer.viewContext
     }
+    
+    var mainContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
 
     // MARK: - Private
 
