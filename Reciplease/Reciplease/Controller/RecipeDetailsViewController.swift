@@ -17,18 +17,32 @@ class RecipeDetailsViewController: UIViewController {
     @IBOutlet weak var recipeDetailImage: UIImageView!
     @IBOutlet weak var recipeDetailTitle: UILabel!
     
-    //MARK: Variables
+    //MARK: Properties
     public var recipeDetails: RecipeDetail?
+    
+    lazy var favoriteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(addToFavorite))
+        button.tintColor = .white
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeView()
     }
     
+    @objc func addToFavorite() {
+        
+    }
+    
     /// Function use to create the view with the RecipeDetail object received
     func makeView() {
+        navigationItem.title = "Reciplease"
+        navigationItem.rightBarButtonItem = favoriteButton
         self.recipeDetailTitle.text = recipeDetails?.title
         self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
+        //        self.recipeDetailImage.image = UIImage(data: recipeDetails?.image ?? Data())
         self.recipeDetailImage.contentMode = .scaleAspectFill
         self.recipeDetailLikeLabel.text = "\(recipeDetails?.like ?? 0)"
         self.recipeDetailsTimeLabel.text = ((recipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)
