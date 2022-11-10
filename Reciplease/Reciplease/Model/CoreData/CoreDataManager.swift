@@ -34,13 +34,30 @@ class CoreDataManager {
         }
     }
     
-    func removeRecipe() {
-        // deletion logic
-        
+    func getFavorites(recipes: [SavedRecipes]) -> [SavedRecipes] {
+        let request: NSFetchRequest = SavedRecipes.fetchRequest()
         do {
-            try managedObjectContext.save()
+            var favoriteRecipes = recipes
+            favoriteRecipes = try managedObjectContext.fetch(request)
+            return favoriteRecipes
         } catch {
-            print("Unable to remove this recipe")
+            print("Fetch favorites recipes failes with error : \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func removeRecipe(url: String) throws {
+        let fetchRequest: NSFetchRequest<SavedRecipes>
+        fetchRequest = SavedRecipes.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "url == %@", url)
+        let result = try? managedObjectContext.fetch(fetchRequest)
+        if let savedRecipe = result?.first {
+            managedObjectContext.delete(savedRecipe)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
