@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Favorites-->
         <scene sceneID="Jc1-Ty-beO">
             <objects>
                 <navigationController id="X0S-Yw-qoQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="rSU-f0-QzK"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star.fill" catalog="system" id="rSU-f0-QzK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z9m-5x-Hdg">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,7 +31,7 @@
                         </navigationBarAppearance>
                     </navigationBar>
                     <connections>
-                        <segue destination="9Vg-IN-0kl" kind="relationship" relationship="rootViewController" id="nor-3w-5vn"/>
+                        <segue destination="nBm-Hs-jyu" kind="relationship" relationship="rootViewController" id="hYY-Dm-V8I"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziY-yM-8Do" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmu-Af-0KP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1329.2307692307693" y="1898.8151658767772"/>
+            <point key="canvasLocation" x="-620" y="1952"/>
         </scene>
         <!--Recipe Details View Controller-->
         <scene sceneID="hOw-M4-220">
@@ -387,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtb-dl-15W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1329.2307692307693" y="2631.7535545023698"/>
+            <point key="canvasLocation" x="-620" y="2708"/>
         </scene>
         <!--Reciplease-->
         <scene sceneID="m7a-C3-KbI">
@@ -538,22 +538,6 @@
             </objects>
             <point key="canvasLocation" x="-1329.2307692307693" y="1213.5071090047393"/>
         </scene>
-        <!--Reciplease-->
-        <scene sceneID="bsb-4b-vbW">
-            <objects>
-                <viewController id="9Vg-IN-0kl" customClass="FavoritesViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I6F-Xu-fSZ">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="qbS-ur-Mpz"/>
-                        <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Reciplease" id="gS9-tX-Txr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P48-Ko-uRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-329" y="1214"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="5c7-YI-afA">
             <objects>
@@ -587,9 +571,13 @@
             <point key="canvasLocation" x="-1328" y="426"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hYY-Dm-V8I"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

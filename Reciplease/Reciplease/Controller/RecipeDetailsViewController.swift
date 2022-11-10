@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class RecipeDetailsViewController: UIViewController {
-
+    
     //MARK: Outlets
     @IBOutlet weak var recipeDetailsTimeLabel: UILabel!
     @IBOutlet weak var recipeDetailLikeLabel: UILabel!
@@ -19,6 +19,9 @@ class RecipeDetailsViewController: UIViewController {
     
     //MARK: Properties
     public var recipeDetails: RecipeDetail?
+    public var favoriteRecipeDetails: SavedRecipes?
+    var navigationIsOnFavorite: Bool?
+    var completion: Void?
     
     let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
     
@@ -35,29 +38,57 @@ class RecipeDetailsViewController: UIViewController {
     }
     
     @objc func favoriteButtonTapped() {
-        if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
+        guard self.navigationIsOnFavorite ?? true else {
+            if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
+                removeRecipe(url: recipeDetails?.url ?? "")
+                favoriteButton.image = UIImage(systemName: "star")
+            } else {
+                guard let recipe = self.recipeDetails else { return }
+                coreDataManager.saveRecipe(recipe: recipe)
+                favoriteButton.image = UIImage(systemName: "star.fill")
+            }
+            return
+        }
+        
+        if coreDataManager.recipeIsAlreadySaved(url: favoriteRecipeDetails?.url ?? "") {
+            removeRecipe(url: favoriteRecipeDetails?.url ?? "")
             favoriteButton.image = UIImage(systemName: "star")
-        } else {
-            guard let recipe = self.recipeDetails else { return }
-            coreDataManager.saveRecipe(recipe: recipe)
-            favoriteButton.image = UIImage(systemName: "star.fill")
+            completion
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func removeRecipe(url: String) {
+        do {
+            try coreDataManager.removeRecipe(url: recipeDetails?.url ?? "")
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
     /// Function use to create the view with the RecipeDetail object received
     func makeView() {
+        guard let condition = self.navigationIsOnFavorite else { return }
         navigationItem.title = "Reciplease"
         navigationItem.rightBarButtonItem = favoriteButton
         
-        if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
+        if coreDataManager.recipeIsAlreadySaved(url: condition ? favoriteRecipeDetails?.url ?? "" : recipeDetails?.url ?? "") {
             favoriteButton.image = UIImage(systemName: "star.fill")
         }
         
-        self.recipeDetailTitle.text = recipeDetails?.title
-        self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
-        self.recipeDetailImage.contentMode = .scaleAspectFill
-        self.recipeDetailLikeLabel.text = "\(recipeDetails?.like ?? 0)"
-        self.recipeDetailsTimeLabel.text = ((recipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)
+        if condition {
+            self.recipeDetailTitle.text = favoriteRecipeDetails?.title
+            self.recipeDetailImage.sd_setImage(with: URL(string: favoriteRecipeDetails?.recipeImage ?? ""))
+            self.recipeDetailImage.contentMode = .scaleAspectFill
+            self.recipeDetailLikeLabel.text = "\(favoriteRecipeDetails?.like ?? 0)"
+            self.recipeDetailsTimeLabel.text = ((favoriteRecipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)
+        } else {
+            self.recipeDetailTitle.text = recipeDetails?.title
+            self.recipeDetailImage.sd_setImage(with: URL(string: recipeDetails?.image ?? ""))
+            self.recipeDetailImage.contentMode = .scaleAspectFill
+            self.recipeDetailLikeLabel.text = "\(recipeDetails?.like ?? 0)"
+            self.recipeDetailsTimeLabel.text = ((recipeDetails?.time ?? 0) * 60).timeAsString(style: .abbreviated)
+        }
         
         let gradient = CAGradientLayer()
         let startColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0).cgColor
@@ -72,15 +103,35 @@ extension RecipeDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = recipeDetails?.detailIngredients?.count else { return 0 }
-        return count
+        guard let condition = self.navigationIsOnFavorite else { return 0 }
+        
+        if condition {
+            guard let count = recipeDetails?.detailIngredients?.count else { return 0 }
+            return count
+        } else {
+            let detailIngredients = favoriteRecipeDetails?.ingredientLines?.components(separatedBy: ",")
+            guard let count = favoriteRecipeDetails?.ingredientLines?.count else { return 0 }
+            return count
+        }
+        
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientLineCell", for: indexPath)
-        if let line = recipeDetails?.detailIngredients?[indexPath.row] {
+        
+        guard self.navigationIsOnFavorite ?? false else {
+            if let line = recipeDetails?.detailIngredients?[indexPath.row] {
+                cell.textLabel?.text = "- " + line
+                cell.textLabel?.textColor = UIColor.white
+            }
+            
+            return cell
+        }
+        
+        let detailIngredients = favoriteRecipeDetails?.ingredientLines?.components(separatedBy: ",")
+        if let line = detailIngredients?[indexPath.row] {
             cell.textLabel?.text = "- " + line
             cell.textLabel?.textColor = UIColor.white
         }

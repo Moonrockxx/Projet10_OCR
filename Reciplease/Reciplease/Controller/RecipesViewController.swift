@@ -15,6 +15,9 @@ class RecipesViewController: UIViewController {
     @IBOutlet weak var recipesTableView: UITableView!
     
     //MARK: Variables
+    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
+    public var favoritesRecipes: [SavedRecipes] = []
+    
     var recipes: [RecipeDetail?] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -23,9 +26,21 @@ class RecipesViewController: UIViewController {
         }
     }
     
+    var navigationIsOnFavorite: Bool {
+        if navigationController?.tabBarController?.tabBar.selectedItem?.title == "Favorites" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getRecipes()
+        self.recipesTableView.reloadData()
+        if navigationIsOnFavorite {
+            favoritesRecipes = coreDataManager.getFavorites(recipes: self.favoritesRecipes)
+        }
     }
     
     /// Function used to get the recipes and store them in the recipes array
@@ -62,7 +77,11 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        if navigationIsOnFavorite {
+            return favoritesRecipes.count
+        } else {
+            return recipes.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,31 +89,61 @@ extension RecipesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        guard indexPath.row < recipes.count else {
+        if navigationIsOnFavorite {
+            guard indexPath.row < favoritesRecipes.count else {
+                return cell
+            }
+            
+            let favoriteRecipe = favoritesRecipes[indexPath.row]
+            cell.configure(like: "\(favoriteRecipe.like)",
+                           time: ((favoriteRecipe.time) * 60).timeAsString(style: .abbreviated),
+                           title: favoriteRecipe.title,
+                           subtitle: favoriteRecipe.subtitle,
+                           image: favoriteRecipe.recipeImage,
+                           uri: favoriteRecipe.uri)
+            
+            return cell
+        } else {
+            guard indexPath.row < recipes.count else {
+                return cell
+            }
+            
+            let recipe = recipes[indexPath.row]
+            cell.configure(like: "\(recipe?.like ?? 0)",
+                           time: ((recipe?.time ?? 0) * 60).timeAsString(style: .abbreviated),
+                           title: recipe?.title,
+                           subtitle: recipe?.subtitle,
+                           image: recipe?.image,
+                           uri: recipe?.uri)
+            
             return cell
         }
-        
-        let recipe = recipes[indexPath.row]
-        cell.configure(like: "\(recipe?.like ?? 0)",
-                       time: ((recipe?.time ?? 0) * 60).timeAsString(style: .abbreviated),
-                       title: recipe?.title,
-                       subtitle: recipe?.subtitle,
-                       image: recipe?.image,
-                       uri: recipe?.uri)
-        
-        return cell
     }
 }
 
 extension RecipesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row < recipes.count {
-            let recipe = recipes[indexPath.row]
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailsVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailsViewController") as! RecipeDetailsViewController
-            detailsVC.recipeDetails = recipe
-            
-            self.navigationController?.pushViewController(detailsVC, animated: true)
+        if navigationIsOnFavorite {
+            if indexPath.row < favoritesRecipes.count {
+                let recipe = favoritesRecipes[indexPath.row]
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let detailsVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailsViewController") as! RecipeDetailsViewController
+                detailsVC.favoriteRecipeDetails = recipe
+                detailsVC.navigationIsOnFavorite = self.navigationIsOnFavorite
+                detailsVC.completion = self.recipesTableView.reloadData()
+                
+                self.navigationController?.pushViewController(detailsVC, animated: true)
+            }
+        } else {
+            if indexPath.row < recipes.count {
+                let recipe = recipes[indexPath.row]
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let detailsVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailsViewController") as! RecipeDetailsViewController
+                detailsVC.recipeDetails = recipe
+                detailsVC.navigationIsOnFavorite = self.navigationIsOnFavorite
+                
+                self.navigationController?.pushViewController(detailsVC, animated: true)
+            }
         }
     }
 }
