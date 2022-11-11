@@ -10,6 +10,17 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
+    enum CDErrors: Error {
+        case noData
+        
+        var title: String {
+            switch self {
+            case .noData:
+                return "No datas found in your favorites"
+            }
+        }
+    }
+    
     let managedObjectContext: NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext = CoreDataStack.sharedInstance.mainContext) {
@@ -34,24 +45,27 @@ class CoreDataManager {
         }
     }
     
-    func getFavorites(recipes: [SavedRecipes]) -> [SavedRecipes] {
+    func getFavorites(completionHandler: @escaping (Result<[SavedRecipes], CDErrors>) -> Void) {
         let request: NSFetchRequest = SavedRecipes.fetchRequest()
         do {
-            var favoriteRecipes = recipes
-            favoriteRecipes = try managedObjectContext.fetch(request)
-            return favoriteRecipes
+            let favoriteRecipes = try managedObjectContext.fetch(request)
+            if favoriteRecipes.isEmpty {
+                return completionHandler(.failure(.noData))
+            } else {
+                return completionHandler(.success(favoriteRecipes))
+            }
         } catch {
             print("Fetch favorites recipes failes with error : \(error.localizedDescription)")
-            return []
+            return completionHandler(.failure(.noData))
         }
     }
     
-    func removeRecipe(url: String) throws {
-        let fetchRequest: NSFetchRequest<SavedRecipes>
-        fetchRequest = SavedRecipes.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "url == %@", url)
+    func removeRecipe(uri: String) throws {
+        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "uri == %@", uri)
+        
         let result = try? managedObjectContext.fetch(fetchRequest)
-        if let savedRecipe = result?.first {
+        if let savedRecipe = result?.first(where: { $0.uri == uri }) {
             managedObjectContext.delete(savedRecipe)
             do {
                 try managedObjectContext.save()
