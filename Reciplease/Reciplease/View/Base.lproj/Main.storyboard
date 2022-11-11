@@ -70,8 +70,9 @@
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-aR-OgW">
                                 <rect key="frame" x="174.33333333333334" y="416" width="41.333333333333343" height="20.333333333333314"/>
+                                <accessibility key="accessibilityConfiguration" label="The label displayed when no datas found"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="200" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iSm-Em-kdl">
@@ -87,6 +88,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uq-Ii-JG0">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                                    <accessibility key="accessibilityConfiguration" label="The recipe image">
+                                                        <bool key="isElement" value="YES"/>
+                                                    </accessibility>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dth-JD-uFd" userLabel="Square View">
                                                     <rect key="frame" x="300" y="10" width="80" height="65"/>
@@ -99,6 +103,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywj-Ck-9ZP">
                                                                             <rect key="frame" x="0.0" y="2.3333333333333321" width="50" height="20.333333333333332"/>
+                                                                            <accessibility key="accessibilityConfiguration" label="The number of likes"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
@@ -106,6 +111,9 @@
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.thumbsup.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5yd-LZ-6Aw">
                                                                             <rect key="frame" x="50" y="0.66666666666666607" width="25" height="23.666666666666671"/>
                                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <accessibility key="accessibilityConfiguration" label="The thumbs up icon">
+                                                                                <bool key="isElement" value="YES"/>
+                                                                            </accessibility>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="40C-1d-2a2"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="oWl-V7-GEB"/>
@@ -118,6 +126,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6R-g9-YXk">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                                            <accessibility key="accessibilityConfiguration" label="The time to cook the recipe"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
@@ -125,6 +134,9 @@
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o0l-08-Szg">
                                                                             <rect key="frame" x="50" y="0.99999999999999822" width="25" height="23.666666666666664"/>
                                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <accessibility key="accessibilityConfiguration" label="The clock icon">
+                                                                                <bool key="isElement" value="YES"/>
+                                                                            </accessibility>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="MFM-dw-R6L"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="cdD-fl-Qpk"/>
@@ -136,6 +148,9 @@
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <accessibility key="accessibilityConfiguration" label="A box with the number of likes and time to cook inside">
+                                                        <bool key="isElement" value="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Z55-xD-mBe"/>
                                                         <constraint firstItem="ggd-LB-ioj" firstAttribute="leading" secondItem="dth-JD-uFd" secondAttribute="leading" id="bHU-ns-CwB"/>
@@ -153,6 +168,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyI-NV-l9n">
                                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <accessibility key="accessibilityConfiguration" label="The recipe title"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
@@ -160,6 +176,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mozzarella, Basil, Large tomato" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd4-2f-7LE">
                                                                     <rect key="frame" x="0.0" y="32" width="320" height="22"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <accessibility key="accessibilityConfiguration" label="The recipe subtitle"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
@@ -190,6 +207,9 @@
                                                 <constraint firstItem="4Uq-Ii-JG0" firstAttribute="leading" secondItem="ewi-LR-JKS" secondAttribute="leading" id="qO7-aw-zQB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="The cell of a recipe">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="likeLabel" destination="ywj-Ck-9ZP" id="RLe-jf-7ud"/>
                                             <outlet property="recipeImage" destination="4Uq-Ii-JG0" id="VK8-2F-hTX"/>
@@ -244,9 +264,13 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fQr-36-C4x">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="248"/>
+                                        <accessibility key="accessibilityConfiguration" label="The recipe image">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIj-WF-JLY">
                                         <rect key="frame" x="10" y="209.33333333333331" width="370" height="28.666666666666657"/>
+                                        <accessibility key="accessibilityConfiguration" label="The recipe title"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -262,6 +286,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07O-eO-mds">
                                                                 <rect key="frame" x="0.0" y="2.6666666666666714" width="50" height="20.333333333333332"/>
+                                                                <accessibility key="accessibilityConfiguration" label="The like number"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -269,6 +294,9 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.thumbsup.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6XR-LD-Zu5">
                                                                 <rect key="frame" x="50" y="1.0000000000000018" width="25" height="23.666666666666671"/>
                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <accessibility key="accessibilityConfiguration" label="The thumbs up icon">
+                                                                    <bool key="isElement" value="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="gmA-O7-NxT"/>
                                                                     <constraint firstAttribute="height" constant="25" id="khl-w8-fik"/>
@@ -282,6 +310,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vq-vm-xmo">
                                                                 <rect key="frame" x="0.0" y="2.3333333333333286" width="50" height="20.333333333333332"/>
+                                                                <accessibility key="accessibilityConfiguration" label="The time to cook the recipe"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -289,6 +318,9 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6PJ-CS-Sgk">
                                                                 <rect key="frame" x="50" y="0.99999999999999822" width="25" height="23.666666666666664"/>
                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <accessibility key="accessibilityConfiguration" label="The clock icon">
+                                                                    <bool key="isElement" value="YES"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="27r-nP-Mun"/>
                                                                     <constraint firstAttribute="height" constant="25" id="eqK-7B-dPG"/>
@@ -302,6 +334,9 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" label="A box with the number of like and time to cook">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PYU-gZ-NMT" secondAttribute="trailing" constant="5" id="1GE-fo-I1x"/>
                                             <constraint firstAttribute="width" constant="80" id="XqJ-dA-4tf"/>
@@ -328,6 +363,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esh-48-Oh2">
                                 <rect key="frame" x="10" y="315" width="370" height="26.333333333333314"/>
+                                <accessibility key="accessibilityConfiguration" label="The title of the list of ingredients"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -349,6 +385,9 @@
                                             <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" label="A cell with the ingredient inside">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -357,6 +396,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFA-yR-oZJ">
                                 <rect key="frame" x="25" y="745" width="340" height="55"/>
+                                <accessibility key="accessibilityConfiguration" label="The get directions button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="PlA-rj-J8f"/>
                                 </constraints>
@@ -364,10 +404,16 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Get directions">
                                     <color key="baseBackgroundColor" red="0.34925425049999997" green="0.57467621560000004" blue="0.38428479430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="getDirections:" destination="Y24-1h-JEU" eventType="touchUpInside" id="JAX-Yb-ahG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yn6-NL-JM1"/>
                         <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration" label="The main view of the recipes or favorites list">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="QAg-z9-ul2" firstAttribute="top" secondItem="esh-48-Oh2" secondAttribute="bottom" constant="25" id="0pd-n8-M4K"/>
                             <constraint firstItem="RFA-yR-oZJ" firstAttribute="leading" secondItem="Yn6-NL-JM1" secondAttribute="leading" constant="25" id="89J-wC-JI7"/>
@@ -410,6 +456,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIY-vk-PiD">
                                         <rect key="frame" x="73.666666666666671" y="10" width="242.66666666666663" height="34.333333333333336"/>
+                                        <accessibility key="accessibilityConfiguration" label="What's in your fridge"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -419,6 +466,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, Sausages..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVW-Xm-NZG">
                                                 <rect key="frame" x="0.0" y="0.0" width="243" height="34.333333333333336"/>
+                                                <accessibility key="accessibilityConfiguration" label="Enter your ingredients here"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad" returnKeyType="continue" textContentType="name"/>
                                                 <connections>
@@ -427,6 +475,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9V-4j-kEq">
                                                 <rect key="frame" x="268" y="0.0" width="54.666666666666686" height="34.333333333333336"/>
+                                                <accessibility key="accessibilityConfiguration" label="Add ingredient"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Add">
                                                     <color key="baseBackgroundColor" red="0.34925425049999997" green="0.57467621560000004" blue="0.38428479430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -452,12 +501,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgg-p0-GJ0">
                                                 <rect key="frame" x="0.0" y="0.0" width="253.33333333333334" height="34.333333333333336"/>
+                                                <accessibility key="accessibilityConfiguration" label="Your ingredients title"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO3-wU-mbK">
                                                 <rect key="frame" x="253.33333333333329" y="0.0" width="106.66666666666666" height="34.333333333333336"/>
+                                                <accessibility key="accessibilityConfiguration" label="Clear the ingredient list button"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Clear">
                                                     <color key="baseBackgroundColor" red="0.54505205150000002" green="0.53725910190000004" blue="0.5372548103" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -485,6 +536,9 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <accessibility key="accessibilityConfiguration" label="A cell with the ingredient name inside">
+                                                    <bool key="isElement" value="YES"/>
+                                                </accessibility>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -496,6 +550,9 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyY-XR-jgH">
                                 <rect key="frame" x="15" y="696" width="360" height="45"/>
+                                <accessibility key="accessibilityConfiguration" label="Search for recipes button">
+                                    <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ZR8-8c-OR6"/>
                                 </constraints>
@@ -510,6 +567,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OIy-NH-Sv0"/>
                         <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration" label="The main view">
+                            <accessibilityTraits key="traits" button="YES" staticText="YES" searchField="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="OIy-NH-Sv0" firstAttribute="bottom" secondItem="eyY-XR-jgH" secondAttribute="bottom" constant="20" id="2sa-EQ-njq"/>
@@ -580,7 +641,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hYY-Dm-V8I"/>
+        <segue reference="mAO-uk-eoh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
