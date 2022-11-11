@@ -38,6 +38,19 @@ class RecipeDetailsViewController: UIViewController {
         self.makeView()
     }
     
+    @IBAction func getDirections(_ sender: Any) {
+        guard navigationIsOnFavorite ?? true else {
+            if let url = URL(string: recipeDetails?.url ?? "") {
+                UIApplication.shared.open(url)
+            }
+            
+            return
+        }
+        
+        if let url = URL(string: favoriteRecipeDetails?.url ?? "") {
+            UIApplication.shared.open(url)
+        }
+    }
     @objc func favoriteButtonTapped() {
         guard self.navigationIsOnFavorite ?? true else {
             if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
