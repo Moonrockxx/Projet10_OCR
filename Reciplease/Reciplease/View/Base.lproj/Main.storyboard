@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -69,9 +68,15 @@
                                 <rect key="frame" x="185" y="416" width="20" height="20"/>
                                 <color key="color" red="0.34925425049999997" green="0.57467621560000004" blue="0.38428479430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-aR-OgW">
+                                <rect key="frame" x="174.33333333333334" y="416" width="41.333333333333343" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="200" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iSm-Em-kdl">
                                 <rect key="frame" x="0.0" y="91" width="390" height="670"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.2116757333" green="0.20006367559999999" blue="0.1960777044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="RecipeCell" rowHeight="200" id="o4i-D0-aEH" customClass="RecipesTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="200"/>
@@ -206,7 +211,9 @@
                             <constraint firstItem="iSm-Em-kdl" firstAttribute="top" secondItem="xBK-Bq-W0x" secondAttribute="top" id="8iu-g0-LU0"/>
                             <constraint firstItem="8Kv-Ff-Sjh" firstAttribute="centerY" secondItem="xBK-Bq-W0x" secondAttribute="centerY" id="DWy-xB-3tm"/>
                             <constraint firstItem="iSm-Em-kdl" firstAttribute="leading" secondItem="xBK-Bq-W0x" secondAttribute="leading" id="Sta-rt-3ZM"/>
+                            <constraint firstItem="H3E-aR-OgW" firstAttribute="centerX" secondItem="xBK-Bq-W0x" secondAttribute="centerX" id="Yhd-tr-P4e"/>
                             <constraint firstItem="xBK-Bq-W0x" firstAttribute="bottom" secondItem="iSm-Em-kdl" secondAttribute="bottom" id="cn4-fj-cis"/>
+                            <constraint firstItem="H3E-aR-OgW" firstAttribute="centerY" secondItem="xBK-Bq-W0x" secondAttribute="centerY" id="iaL-5u-9ie"/>
                             <constraint firstItem="xBK-Bq-W0x" firstAttribute="trailing" secondItem="iSm-Em-kdl" secondAttribute="trailing" id="khP-wf-Ltj"/>
                             <constraint firstItem="8Kv-Ff-Sjh" firstAttribute="centerX" secondItem="xBK-Bq-W0x" secondAttribute="centerX" id="vD5-MG-Hv3"/>
                         </constraints>
@@ -215,6 +222,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="RV4-tV-l2O"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorLabel" destination="H3E-aR-OgW" id="hPQ-iY-rB2"/>
                         <outlet property="loader" destination="8Kv-Ff-Sjh" id="19R-Fr-gUx"/>
                         <outlet property="recipesTableView" destination="iSm-Em-kdl" id="y0a-bM-LnZ"/>
                     </connections>
@@ -578,8 +586,5 @@
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

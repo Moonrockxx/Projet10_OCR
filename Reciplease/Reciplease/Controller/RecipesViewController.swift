@@ -13,10 +13,18 @@ class RecipesViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var recipesTableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabel!
+
     
     //MARK: Variables
     let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
-    public var favoritesRecipes: [SavedRecipes] = []
+    public var favoritesRecipes: [SavedRecipes] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.recipesTableView.reloadData()
+            }
+        }
+    }
     
     var recipes: [RecipeDetail?] = [] {
         didSet {
@@ -37,10 +45,26 @@ class RecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getRecipes()
-        self.recipesTableView.reloadData()
         if navigationIsOnFavorite {
-            favoritesRecipes = coreDataManager.getFavorites(recipes: self.favoritesRecipes)
+            coreDataManager.getFavorites(completionHandler: { result in
+                switch result {
+                case .success(let favorites):
+                    self.favoritesRecipes = favorites
+                case .failure(let error):
+                    self.showEmptyFavorites(error: error.title)
+                }
+            })
         }
+    }
+    
+    private func showEmptyFavorites(error: String) {
+//        DispatchQueue.main.async {
+            self.loader.isHidden = true
+            self.recipesTableView.isHidden = true
+            
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = error
+//        }
     }
     
     /// Function used to get the recipes and store them in the recipes array
@@ -130,7 +154,7 @@ extension RecipesViewController: UITableViewDelegate {
                 let detailsVC = storyboard.instantiateViewController(withIdentifier: "RecipeDetailsViewController") as! RecipeDetailsViewController
                 detailsVC.favoriteRecipeDetails = recipe
                 detailsVC.navigationIsOnFavorite = self.navigationIsOnFavorite
-                detailsVC.completion = self.recipesTableView.reloadData()
+                detailsVC.previousTableView = self.recipesTableView
                 
                 self.navigationController?.pushViewController(detailsVC, animated: true)
             }

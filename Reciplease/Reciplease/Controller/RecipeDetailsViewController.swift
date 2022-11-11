@@ -17,11 +17,12 @@ class RecipeDetailsViewController: UIViewController {
     @IBOutlet weak var recipeDetailImage: UIImageView!
     @IBOutlet weak var recipeDetailTitle: UILabel!
     
+    var previousTableView: UITableView!
+    
     //MARK: Properties
     public var recipeDetails: RecipeDetail?
     public var favoriteRecipeDetails: SavedRecipes?
     var navigationIsOnFavorite: Bool?
-    var completion: Void?
     
     let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
     
@@ -40,7 +41,7 @@ class RecipeDetailsViewController: UIViewController {
     @objc func favoriteButtonTapped() {
         guard self.navigationIsOnFavorite ?? true else {
             if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
-                removeRecipe(url: recipeDetails?.url ?? "")
+                removeRecipe(uri: recipeDetails?.uri ?? "")
                 favoriteButton.image = UIImage(systemName: "star")
             } else {
                 guard let recipe = self.recipeDetails else { return }
@@ -51,16 +52,17 @@ class RecipeDetailsViewController: UIViewController {
         }
         
         if coreDataManager.recipeIsAlreadySaved(url: favoriteRecipeDetails?.url ?? "") {
-            removeRecipe(url: favoriteRecipeDetails?.url ?? "")
+            removeRecipe(uri: favoriteRecipeDetails?.uri ?? "")
             favoriteButton.image = UIImage(systemName: "star")
-            completion
+
             self.navigationController?.popViewController(animated: true)
+            self.previousTableView.reloadData()
         }
     }
     
-    func removeRecipe(url: String) {
+    func removeRecipe(uri: String) {
         do {
-            try coreDataManager.removeRecipe(url: recipeDetails?.url ?? "")
+            try coreDataManager.removeRecipe(uri: uri)
         } catch {
             print(error.localizedDescription)
         }
@@ -108,14 +110,13 @@ extension RecipeDetailsViewController: UITableViewDataSource {
         guard let condition = self.navigationIsOnFavorite else { return 0 }
         
         if condition {
-            guard let count = recipeDetails?.detailIngredients?.count else { return 0 }
+            let detailIngredients = favoriteRecipeDetails?.ingredientLines?.components(separatedBy: ",")
+            guard let count = detailIngredients?.count else { return 0 }
             return count
         } else {
-            let detailIngredients = favoriteRecipeDetails?.ingredientLines?.components(separatedBy: ",")
-            guard let count = favoriteRecipeDetails?.ingredientLines?.count else { return 0 }
+            guard let count = recipeDetails?.detailIngredients?.count else { return 0 }
             return count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
