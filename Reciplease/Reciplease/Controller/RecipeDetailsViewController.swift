@@ -41,14 +41,23 @@ class RecipeDetailsViewController: UIViewController {
     @IBAction func getDirections(_ sender: Any) {
         guard navigationIsOnFavorite ?? true else {
             if let url = URL(string: recipeDetails?.url ?? "") {
-                UIApplication.shared.open(url)
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                } else {
+                    // present alert
+                }
+                
             }
             
             return
         }
         
         if let url = URL(string: favoriteRecipeDetails?.url ?? "") {
-            UIApplication.shared.open(url)
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                // present alert
+            }
         }
     }
     @objc func favoriteButtonTapped() {

@@ -44,17 +44,26 @@ class RecipesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getRecipes()
+        
+        if !navigationIsOnFavorite {
+            self.getRecipes()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if navigationIsOnFavorite {
             coreDataManager.getFavorites(completionHandler: { result in
                 switch result {
-                case .success(let favorites):
-                    self.favoritesRecipes = favorites
+                case .success(let recipes):
+                    self.favoritesRecipes = recipes
+                    self.hideLoader()
                 case .failure(let error):
                     self.showEmptyFavorites(error: error.title)
                 }
             })
         }
+        
     }
     
     private func showEmptyFavorites(error: String) {
@@ -65,6 +74,11 @@ class RecipesViewController: UIViewController {
             self.errorLabel.isHidden = false
             self.errorLabel.text = error
 //        }
+    }
+    
+    func hideLoader() {
+        self.loader.isHidden = true
+        self.recipesTableView.isHidden = false
     }
     
     /// Function used to get the recipes and store them in the recipes array
@@ -80,8 +94,7 @@ class RecipesViewController: UIViewController {
                     })
                 } else {
                     self.recipes = recipes ?? []
-                    self.loader.isHidden = true
-                    self.recipesTableView.isHidden = false
+                    self.hideLoader()
                 }
                 
             case .failure(let error):
@@ -102,6 +115,7 @@ extension RecipesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if navigationIsOnFavorite {
+            // Empty = error sinon 
             return favoritesRecipes.count
         } else {
             return recipes.count
