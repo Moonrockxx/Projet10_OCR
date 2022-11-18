@@ -39,6 +39,9 @@
 		60B7A28A291266D600932D69 /* SavedRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A289291266D600932D69 /* SavedRecipes.swift */; };
 		60B7A28C291267A700932D69 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A28B291267A700932D69 /* CoreDataStack.swift */; };
 		60B7A28E29126D7800932D69 /* RecipeDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A28D29126D7800932D69 /* RecipeDetailsRepository.swift */; };
+		60F121842927CC1600FF1BDF /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F121832927CC1600FF1BDF /* CoreDataTests.swift */; };
+		60F121862927CC4000FF1BDF /* SavedRecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F121852927CC4000FF1BDF /* SavedRecipesService.swift */; };
+		60F121882927CC5500FF1BDF /* CoreDataTestsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F121872927CC5500FF1BDF /* CoreDataTestsStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		60B7A289291266D600932D69 /* SavedRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipes.swift; sourceTree = "<group>"; };
 		60B7A28B291267A700932D69 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		60B7A28D29126D7800932D69 /* RecipeDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsRepository.swift; sourceTree = "<group>"; };
+		60F121832927CC1600FF1BDF /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		60F121852927CC4000FF1BDF /* SavedRecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesService.swift; sourceTree = "<group>"; };
+		60F121872927CC5500FF1BDF /* CoreDataTestsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestsStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,9 @@
 		606F619A29254D49003557DA /* CoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
+				60F121832927CC1600FF1BDF /* CoreDataTests.swift */,
+				60F121852927CC4000FF1BDF /* SavedRecipesService.swift */,
+				60F121872927CC5500FF1BDF /* CoreDataTestsStack.swift */,
 			);
 			path = CoreDataTests;
 			sourceTree = "<group>";
@@ -444,7 +453,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F121862927CC4000FF1BDF /* SavedRecipesService.swift in Sources */,
+				60F121842927CC1600FF1BDF /* CoreDataTests.swift in Sources */,
 				60A2CB7428D9F5A3002321AC /* RecipleaseTests.swift in Sources */,
+				60F121882927CC5500FF1BDF /* CoreDataTestsStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
