@@ -24,7 +24,7 @@ class RecipeDetailsViewController: UIViewController {
     public var favoriteRecipeDetails: SavedRecipes?
     var navigationIsOnFavorite: Bool?
     
-    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
+    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
     
     lazy var favoriteButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonTapped))

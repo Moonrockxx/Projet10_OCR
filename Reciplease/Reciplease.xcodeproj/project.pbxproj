@@ -23,6 +23,7 @@
 		6065FD2628DCB99F00E885B2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6065FD2528DCB99F00E885B2 /* GradientView.swift */; };
 		6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */; };
 		60679E552912B5E300A52697 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60679E542912B5E300A52697 /* CoreDataManager.swift */; };
+		606F618F2924F6CC003557DA /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 606F618E2924F6CC003557DA /* SDWebImage */; };
 		60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5C28D9F5A2002321AC /* AppDelegate.swift */; };
 		60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB5E28D9F5A2002321AC /* SceneDelegate.swift */; };
 		60A2CB6428D9F5A2002321AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60A2CB6228D9F5A2002321AC /* Main.storyboard */; };
@@ -107,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606F618F2924F6CC003557DA /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +150,20 @@
 			path = Subclasses;
 			sourceTree = "<group>";
 		};
+		606F618D2924F6CC003557DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		606F619A29254D49003557DA /* CoreDataTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataTests;
+			sourceTree = "<group>";
+		};
 		60A2CB5028D9F5A2002321AC = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +171,7 @@
 				60A2CB7228D9F5A3002321AC /* RecipleaseTests */,
 				60A2CB7C28D9F5A3002321AC /* RecipleaseUITests */,
 				60A2CB5A28D9F5A2002321AC /* Products */,
+				606F618D2924F6CC003557DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +202,7 @@
 		60A2CB7228D9F5A3002321AC /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				606F619A29254D49003557DA /* CoreDataTests */,
 				60A2CB7328D9F5A3002321AC /* RecipleaseTests.swift */,
 			);
 			path = RecipleaseTests;
@@ -293,6 +311,9 @@
 				60A2CB7128D9F5A3002321AC /* PBXTargetDependency */,
 			);
 			name = RecipleaseTests;
+			packageProductDependencies = (
+				606F618E2924F6CC003557DA /* SDWebImage */,
+			);
 			productName = RecipleaseTests;
 			productReference = 60A2CB6F28D9F5A3002321AC /* RecipleaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -800,6 +821,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		606F618E2924F6CC003557DA /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60458C1C28E59F2F009ADE7F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

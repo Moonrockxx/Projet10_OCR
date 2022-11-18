@@ -17,7 +17,7 @@ class RecipesViewController: UIViewController {
 
     
     //MARK: Variables
-    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.sharedInstance.mainContext)
+    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
     public var favoritesRecipes: [SavedRecipes] = [] {
         didSet {
             DispatchQueue.main.async {

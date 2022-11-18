@@ -7,16 +7,334 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84046984-6D36-487E-B506-29391E457CA0"
+            uuid = "A1CE0C79-A4E9-4E68-875A-7452F235D48A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reciplease/Controller/RecipesViewController.swift"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A1CE0C79-A4E9-4E68-875A-7452F235D48A - 66839da386e27198"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "A1CE0C79-A4E9-4E68-875A-7452F235D48A - 7d1e36abec925e04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "1504">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "817250B8-59F4-47C3-BA3A-9BD026244222"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "817250B8-59F4-47C3-BA3A-9BD026244222 - 7d1e36abec92590c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "1428">
+               </Location>
+               <Location
+                  uuid = "817250B8-59F4-47C3-BA3A-9BD026244222 - 66839da386e27637"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "916">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E02A2CA9-1086-476E-9ABA-2EB1A9784942"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E02A2CA9-1086-476E-9ABA-2EB1A9784942 - 66839da386e27690"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "1020">
+               </Location>
+               <Location
+                  uuid = "E02A2CA9-1086-476E-9ABA-2EB1A9784942 - 66839da386e27690"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "516">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4DD7027-7AED-4672-9DB0-DB4BF148E141"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C4DD7027-7AED-4672-9DB0-DB4BF148E141 - e91a1d4be1304a47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "1020">
+               </Location>
+               <Location
+                  uuid = "C4DD7027-7AED-4672-9DB0-DB4BF148E141 - e91a1d4be1304aa0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "916">
+               </Location>
+               <Location
+                  uuid = "C4DD7027-7AED-4672-9DB0-DB4BF148E141 - e91a1d4be1304a81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "916">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8516A915-2172-40E3-859A-2772C1999F62"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8516A915-2172-40E3-859A-2772C1999F62 - e91a1d4be1304ac3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "856">
+               </Location>
+               <Location
+                  uuid = "8516A915-2172-40E3-859A-2772C1999F62 - e91a1d4be1304ac3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "8516A915-2172-40E3-859A-2772C1999F62 - e91a1d4be130492c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "516">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83283DE6-84B3-4B13-A388-938BC1267590"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "83283DE6-84B3-4B13-A388-938BC1267590 - 66839da386e276d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "916">
+               </Location>
+               <Location
+                  uuid = "83283DE6-84B3-4B13-A388-938BC1267590 - 66839da386e276d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;Reciplease.SavedRecipes&gt;, RecipleaseTests.RecipesService.CDErrors&gt;) -&gt; () in RecipleaseTests.CoreDataTests.testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P10_Thomas_Ferre%CC%81_092022/Projet10_OCR/Reciplease/RecipleaseTests/CoreDataTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16483585-3EE2-48A3-8C23-F5E68146FE0E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/CoreDataTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "testGivenWeHaveARecipeInFavorites_WhenWeWantToRemoveIt_ThenTheRecipeIsRemoved()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
