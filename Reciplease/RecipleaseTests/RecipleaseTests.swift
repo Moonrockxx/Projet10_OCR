@@ -9,28 +9,41 @@ import XCTest
 @testable import Reciplease
 
 final class RecipleaseTests: XCTestCase {
+    private var ingredients: [Ingredients] = []
+    private var ingredientArray: [String] = []
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    //MARK: IngredientService
+    func testGivenWeHaveIngredientArrays_WhenWeAddAnIngredient_ThenTheIngredientIsPresentInTheArrays() {
+        let newIngredient = Ingredients(name: "Tomatoes")
+        
+        try? IngredientService.shared.add(ingredient: newIngredient)
+        
+        XCTAssertEqual(IngredientService.shared.ingredients.first?.name, "Tomatoes")
+        XCTAssertEqual(IngredientService.shared.ingredientArray.first, "Tomatoes")
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testGivenWeHaveIngredientArrays_WhenWeAddAnIngredientAlreadyPresent_ThenTheFunctionThrowsAnError() {
+        let newIngredient = Ingredients(name: "Tomatoes")
+        
+        try? IngredientService.shared.add(ingredient: newIngredient)
+        
+        XCTAssertThrowsError(try IngredientService.shared.add(ingredient: newIngredient))
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testGivenWeHaveIngredientArrays_WhenWeRemoveAllTheIngredients_TheTheArraysAreEmpty() {
+        let newIngredient = Ingredients(name: "Tomatoes")
+        
+        try? IngredientService.shared.add(ingredient: newIngredient)
+        
+        IngredientService.shared.remove(at: 0)
+        XCTAssertEqual(IngredientService.shared.ingredients.first?.name, nil)
+        
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testGivenWeHaveIngredientArrays_WhenWeRemoveAllTheIngredients_ThenTheArrayIsEmpty() {
+        IngredientService.shared.removeIngredients()
+        XCTAssertEqual(IngredientService.shared.ingredients.first?.name, nil)
     }
-
+    
+    
 }
