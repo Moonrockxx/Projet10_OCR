@@ -16,7 +16,7 @@ class IngredientService {
     
     private init() {}
     
-    private(set) var ingredients: [Ingredients] = []
+    /*private(set)*/ var ingredients: [Ingredients] = []
     var ingredientArray: [String] = []
     
     /// Function that adds ingredients to the ingredients and ingredientArray arrays

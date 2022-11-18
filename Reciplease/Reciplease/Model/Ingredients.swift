@@ -8,6 +8,6 @@
 import Foundation
 
 //MARK: Ingredients
-struct Ingredients {
+struct Ingredients: Equatable {
     var name: String = ""
 }

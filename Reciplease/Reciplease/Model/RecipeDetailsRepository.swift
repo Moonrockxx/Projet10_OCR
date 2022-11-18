@@ -11,7 +11,7 @@ import CoreData
 final class RecipeDetailsRepository {
     private let coreDataStack: CoreDataStack
     
-    init(coreDataStack: CoreDataStack = CoreDataStack.sharedInstance) {
+    init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.coreDataStack = coreDataStack
     }
     

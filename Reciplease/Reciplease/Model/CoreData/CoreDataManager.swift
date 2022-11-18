@@ -9,7 +9,15 @@ import Foundation
 import CoreData
 import UIKit
 
-class CoreDataManager {
+protocol CoreDataManagerProtocol {
+    func saveRecipe(recipe: RecipeDetail)
+    func getFavorites(completionHandler: @escaping (Result<[SavedRecipes], CoreDataManager.CDErrors>) -> Void)
+    func removeRecipe(uri: String) throws
+    func removeAllRecipes() throws
+    func recipeIsAlreadySaved(url: String) -> Bool
+}
+
+class CoreDataManager: CoreDataManagerProtocol {
     enum CDErrors: Error {
         case noData
         
@@ -23,7 +31,7 @@ class CoreDataManager {
     
     let managedObjectContext: NSManagedObjectContext
     
-    init(managedObjectContext: NSManagedObjectContext = CoreDataStack.sharedInstance.mainContext) {
+    init(managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.managedObjectContext = managedObjectContext
     }
     
@@ -39,7 +47,7 @@ class CoreDataManager {
         entity.url = recipe.url
         
         do {
-            try CoreDataStack.sharedInstance.mainContext.save()
+            try CoreDataStack.shared.mainContext.save()
         } catch {
             print(error)
         }
@@ -73,6 +81,24 @@ class CoreDataManager {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func removeAllRecipes() throws {
+        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+        let result = try? managedObjectContext.fetch(fetchRequest)
+        
+        if let results = result {
+            for i in results {
+                managedObjectContext.delete(i)
+            }
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
     
     func recipeIsAlreadySaved(url: String) -> Bool {
