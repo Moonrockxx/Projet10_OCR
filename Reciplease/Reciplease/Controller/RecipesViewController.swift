@@ -56,8 +56,14 @@ class RecipesViewController: UIViewController {
             coreDataManager.getFavorites(completionHandler: { result in
                 switch result {
                 case .success(let recipes):
-                    self.favoritesRecipes = recipes
-                    self.hideLoader()
+                    if recipes.isEmpty {
+                        self.hideLoader()
+                        self.showEmptyFavorites(error: "No favorites registred, add ingredients to get recipes that you can save as favorites to find them here")
+                    } else {
+                        self.favoritesRecipes = recipes
+                        self.hideLoader()
+                    }
+                    
                 case .failure(let error):
                     self.showEmptyFavorites(error: error.title)
                 }
