@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6011C7092928E8980070DE90 /* FakeNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6011C7082928E8980070DE90 /* FakeNetworkRequest.swift */; };
 		60458C1228E486F7009ADE7F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 60458C1128E486F7009ADE7F /* Alamofire */; };
 		60458C1528E487DC009ADE7F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60458C1428E487DC009ADE7F /* APIService.swift */; };
 		60458C1728E4996C009ADE7F /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60458C1628E4996C009ADE7F /* Recipes.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6011C7082928E8980070DE90 /* FakeNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkRequest.swift; sourceTree = "<group>"; };
 		60458C1428E487DC009ADE7F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		60458C1628E4996C009ADE7F /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		60458C1928E4A1A8009ADE7F /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6011C7072928E8220070DE90 /* AlamofireTests */ = {
+			isa = PBXGroup;
+			children = (
+				6011C7082928E8980070DE90 /* FakeNetworkRequest.swift */,
+			);
+			path = AlamofireTests;
+			sourceTree = "<group>";
+		};
 		60458C1328E48793009ADE7F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +221,7 @@
 		60A2CB7228D9F5A3002321AC /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				6011C7072928E8220070DE90 /* AlamofireTests */,
 				606F619A29254D49003557DA /* CoreDataTests */,
 				60A2CB7328D9F5A3002321AC /* RecipleaseTests.swift */,
 			);
@@ -454,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60F121862927CC4000FF1BDF /* SavedRecipesService.swift in Sources */,
+				6011C7092928E8980070DE90 /* FakeNetworkRequest.swift in Sources */,
 				60F121842927CC1600FF1BDF /* CoreDataTests.swift in Sources */,
 				60A2CB7428D9F5A3002321AC /* RecipleaseTests.swift in Sources */,
 				60F121882927CC5500FF1BDF /* CoreDataTestsStack.swift in Sources */,

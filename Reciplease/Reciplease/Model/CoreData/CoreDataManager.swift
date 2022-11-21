@@ -57,11 +57,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         let request: NSFetchRequest = SavedRecipes.fetchRequest()
         do {
             let favoriteRecipes = try managedObjectContext.fetch(request)
-            if favoriteRecipes.isEmpty {
-                return completionHandler(.failure(.noData))
-            } else {
-                return completionHandler(.success(favoriteRecipes))
-            }
+            return completionHandler(.success(favoriteRecipes))
         } catch {
             print("Fetch favorites recipes failes with error : \(error.localizedDescription)")
             return completionHandler(.failure(.noData))

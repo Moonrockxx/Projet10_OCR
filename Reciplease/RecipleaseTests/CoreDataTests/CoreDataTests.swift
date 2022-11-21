@@ -11,7 +11,7 @@ import CoreData
 
 final class CoreDataTests: XCTestCase {
     
-    var savedRecipesService: SavedRecipesService!
+    var coreDataManager: CoreDataManager!
     var coreDataStack: CoreDataStack!
     
     private var savedRecipes: [SavedRecipes] = []
@@ -36,22 +36,23 @@ final class CoreDataTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        coreDataStack = CoreDataTestsStack()
-        savedRecipesService = SavedRecipesService(coreDataStack: coreDataStack)
+        coreDataStack = CoreDataTestsStack(modelName: "Reciplease", persistentStoreDescription: "/dev/null")
+        coreDataManager = CoreDataManager()
     }
     
     override func tearDown() {
         super.tearDown()
         coreDataStack = nil
-        savedRecipesService = nil
+        coreDataManager = nil
         self.savedRecipes = []
     }
     
     func testCheckForDuplicateRecipesBeforeSaving() {
-        savedRecipesService.saveRecipe(recipe: recipeForTest1)
-        savedRecipesService.saveRecipe(recipe: recipeForTest2)
+        try? coreDataManager.removeAllRecipes()
+        coreDataManager.saveRecipe(recipe: recipeForTest1)
+        coreDataManager.saveRecipe(recipe: recipeForTest2)
         
-        savedRecipesService.getFavorites(completionHandler: { result in
+        coreDataManager.getFavorites(completionHandler: { result in
             switch result {
             case .success(let recipes):
                 self.savedRecipes = recipes
@@ -64,14 +65,15 @@ final class CoreDataTests: XCTestCase {
             print("🤡 \(i.title ?? "")")
         }
         
-        let isDuplicate = savedRecipesService.recipeIsAlreadySaved(url: recipeForTest1.url ?? "")
+        let isDuplicate = coreDataManager.recipeIsAlreadySaved(url: recipeForTest1.url ?? "")
         
         XCTAssertTrue(isDuplicate)
     }
     
     func testSaveARecipeAsFavorite() {
-        savedRecipesService.saveRecipe(recipe: recipeForTest1)
-        
+        try? coreDataManager.removeAllRecipes()
+        coreDataManager.saveRecipe(recipe: recipeForTest1)
+
         XCTAssertEqual(recipeForTest1.title, "Steak Frites")
         XCTAssertEqual(recipeForTest1.subtitle, "Avec du ketchup")
         XCTAssertEqual(recipeForTest1.like, 33)
@@ -82,10 +84,12 @@ final class CoreDataTests: XCTestCase {
     }
     
     func testFetchFavorites() {
-        savedRecipesService.saveRecipe(recipe: recipeForTest1)
-        savedRecipesService.saveRecipe(recipe: recipeForTest2)
-        
-        savedRecipesService.getFavorites(completionHandler: { result in
+        try? coreDataManager.removeAllRecipes()
+    
+        coreDataManager.saveRecipe(recipe: recipeForTest1)
+        coreDataManager.saveRecipe(recipe: recipeForTest2)
+
+        coreDataManager.getFavorites(completionHandler: { result in
             switch result {
             case .success(let recipes):
                 self.savedRecipes = recipes
@@ -93,27 +97,27 @@ final class CoreDataTests: XCTestCase {
                 print(failure)
             }
         })
-        
+
         for i in savedRecipes {
             print("💩 \(i.title ?? "")")
         }
-        
+
         XCTAssertTrue(savedRecipes.count == 2)
-        XCTAssertEqual(savedRecipes[1].title, recipeForTest1.title)
     }
     
     func testRemoveARecipeFromFavorites() {
-        savedRecipesService.saveRecipe(recipe: recipeForTest1)
-        savedRecipesService.saveRecipe(recipe: recipeForTest2)
+        try? coreDataManager.removeAllRecipes()
+        coreDataManager.saveRecipe(recipe: recipeForTest1)
+        coreDataManager.saveRecipe(recipe: recipeForTest2)
         
         do {
-            try savedRecipesService.removeRecipe(uri: recipeForTest2.uri ?? "")
+            try coreDataManager.removeRecipe(uri: recipeForTest2.uri ?? "")
         } catch {
             print(error)
         }
         
         
-        savedRecipesService.getFavorites(completionHandler: { result in
+        coreDataManager.getFavorites(completionHandler: { result in
             switch result {
             case .success(let recipes):
                 self.savedRecipes = recipes
@@ -131,16 +135,17 @@ final class CoreDataTests: XCTestCase {
     }
     
     func testRemoveAllRecipesInFavorites() {
-        savedRecipesService.saveRecipe(recipe: recipeForTest1)
-        savedRecipesService.saveRecipe(recipe: recipeForTest2)
+        try? coreDataManager.removeAllRecipes()
+        coreDataManager.saveRecipe(recipe: recipeForTest1)
+        coreDataManager.saveRecipe(recipe: recipeForTest2)
         
         do {
-            try savedRecipesService.removeAllRecipes()
+            try coreDataManager.removeAllRecipes()
         } catch {
             print(error)
         }
         
-        savedRecipesService.getFavorites(completionHandler: { result in
+        coreDataManager.getFavorites(completionHandler: { result in
             switch result {
             case .success(let recipes):
                 self.savedRecipes = recipes
