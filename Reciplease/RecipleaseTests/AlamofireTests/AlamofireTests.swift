@@ -10,10 +10,11 @@ import Alamofire
 @testable import Reciplease
 
 final class AlamofireTests: XCTestCase {
+    
     var error: APIError!
     var ingredients: [String]? = ["mustard", "cheese", "tomatoes"]
     
-    func testGetRecipesShouldPostFailedCompletionHandlerIfThereIsNoDataAtAll() {
+    func testGetRecipesShouldPostFailedCompletionIfThereIsNoDataAtAll() {
         let session = AlamofireSessionFake(response: FakeAlamofireResponse(error: nil, data: nil, response: nil))
         let requestService = APIService(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -27,7 +28,7 @@ final class AlamofireTests: XCTestCase {
         }
     }
     
-    func testGetRecipesShouldPostFailedCompletionHandlerIfABadRequestIsMade() {
+    func testGetRecipesShouldPostFailedCompletionIfABadRequestIsMade() {
         let session = AlamofireSessionFake(response: FakeAlamofireResponse(error: error, data: FakeResponseData.recipesCorrectData, response: FakeResponseData.responseKO))
         let requestService = APIService(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -38,14 +39,13 @@ final class AlamofireTests: XCTestCase {
             }
             XCTAssertNotNil(error)
             XCTAssertEqual(error, APIError.badRequest)
-//            XCTAssertTrue(error.errorDescription == "Oups !")
-//            XCTAssertTrue(error.failureReason == "The request has failed.")
+            XCTAssertTrue(error.description == "Bad request")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.5)
     }
     
-    func testGetRecipesShouldPostFailedCompletionHandlerIfDatasAreIncorrect() {
+    func testGetRecipesShouldPostFailedCompletionIfDatasAreIncorrect() {
         let session = AlamofireSessionFake(response: FakeAlamofireResponse(error: error, data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK))
         let requestService = APIService(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -56,14 +56,13 @@ final class AlamofireTests: XCTestCase {
             }
             XCTAssertNotNil(error)
             XCTAssertEqual(error, APIError.data)
-//            XCTAssertTrue(error.errorDescription == "Oups !")
-//            XCTAssertTrue(error.failureReason == "These data can't be retrieved at the moment.")
+            XCTAssertTrue(error.description == "No Data")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.5)
     }
     
-    func testGetRecipesShouldPostSuccessCompletionHandlerIfNoErrorGoodDataAndGoodResponse() {
+    func testGetRecipesShouldPostSuccessCompletionIfNoErrorCorrectDataAndCorrectResponse() {
         let session = AlamofireSessionFake(response: FakeAlamofireResponse(error: error, data: FakeResponseData.recipesCorrectData, response: FakeResponseData.responseOK))
         let requestService = APIService(session: session)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -79,10 +78,10 @@ final class AlamofireTests: XCTestCase {
         wait(for: [expectation], timeout: 0.5)
     }
     
-    func testGetRecipesShouldPostSuccessCompletionHandlerWithTheRealAlamofireClient() {
+    func testGetRecipesShouldPostSuccessCompletionWithTheRealAlamofireClient() {
         let requestService = APIService(session: AlamofireClient() as SessionProtocol)
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        requestService.getRecipes(ingredients: self.ingredients) { result in
+        requestService.getRecipes() { result in
             guard case .success(let result) = result else {
                 XCTFail("Test must succeed.")
                 return

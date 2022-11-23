@@ -9,12 +9,12 @@ import UIKit
 import SDWebImage
 
 class RecipesViewController: UIViewController {
-
+    
     //MARK: Outlets
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var recipesTableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
-
+    
     
     //MARK: Variables
     private let apiService = APIService(session: AlamofireClient() as SessionProtocol)
@@ -80,13 +80,11 @@ class RecipesViewController: UIViewController {
     }
     
     private func showEmptyFavorites(error: String) {
-//        DispatchQueue.main.async {
-            self.loader.isHidden = true
-            self.recipesTableView.isHidden = true
-            
-            self.errorLabel.isHidden = false
-            self.errorLabel.text = error
-//        }
+        self.loader.isHidden = true
+        self.recipesTableView.isHidden = true
+        
+        self.errorLabel.isHidden = false
+        self.errorLabel.text = error
     }
     
     func hideLoader() {
@@ -96,28 +94,6 @@ class RecipesViewController: UIViewController {
     
     /// Function used to get the recipes and store them in the recipes array
     func getRecipes() throws {
-//        APIService.shared.getRecipes { result in
-//            switch result {
-//            case .success(let recipes):
-//                let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
-//
-//                if recipes?.count == 0 {
-//                    self.presentAlert(title: "Something went wrong", message: "No recipes found", handler: { _ in
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                } else {
-//                    self.recipes = recipes ?? []
-//                    self.hideLoader()
-//                }
-//
-//            case .failure(let error):
-//                DispatchQueue.main.async {
-//                    self.presentAlert(title: "Error", message: error.description, handler: { _ in
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                }
-//            }
-//        }
         apiService.getRecipes { result in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }

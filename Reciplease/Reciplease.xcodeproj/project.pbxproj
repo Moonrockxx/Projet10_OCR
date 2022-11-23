@@ -39,7 +39,6 @@
 		60A2CB7E28D9F5A3002321AC /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB7D28D9F5A3002321AC /* RecipleaseUITests.swift */; };
 		60A2CB8028D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */; };
 		60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9028D9FE9F002321AC /* SearchViewController.swift */; };
-		60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */; };
 		60A2CB9E28DB6C78002321AC /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */; };
 		60B1FBA2292BDF1400FD5F55 /* AlamofireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B1FBA1292BDF1400FD5F55 /* AlamofireTests.swift */; };
 		60B7A288291265F300932D69 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A286291265F200932D69 /* Reciplease.xcdatamodeld */; };
@@ -99,7 +98,6 @@
 		60A2CB7D28D9F5A3002321AC /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		60A2CB7F28D9F5A3002321AC /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		60A2CB9028D9FE9F002321AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		60B1FBA1292BDF1400FD5F55 /* AlamofireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTests.swift; sourceTree = "<group>"; };
 		60B7A287291265F300932D69 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				60A2CB9028D9FE9F002321AC /* SearchViewController.swift */,
-				60A2CB9228D9FF68002321AC /* FavoritesViewController.swift */,
 				60A2CB9D28DB6C78002321AC /* RecipesViewController.swift */,
 				6067428628E5CEF900B5837E /* RecipeDetailsViewController.swift */,
 			);
@@ -470,7 +467,6 @@
 				60B7A28C291267A700932D69 /* CoreDataStack.swift in Sources */,
 				60A2CB5D28D9F5A2002321AC /* AppDelegate.swift in Sources */,
 				60458C1728E4996C009ADE7F /* Recipes.swift in Sources */,
-				60A2CB9328D9FF68002321AC /* FavoritesViewController.swift in Sources */,
 				60A2CB5F28D9F5A2002321AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

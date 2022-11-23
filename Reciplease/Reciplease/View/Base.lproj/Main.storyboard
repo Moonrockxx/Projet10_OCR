@@ -68,8 +68,8 @@
                                 <rect key="frame" x="185" y="416" width="20" height="20"/>
                                 <color key="color" red="0.34925425049999997" green="0.57467621560000004" blue="0.38428479430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-aR-OgW">
-                                <rect key="frame" x="174.33333333333334" y="416" width="41.333333333333343" height="20.333333333333314"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-aR-OgW">
+                                <rect key="frame" x="15" y="416" width="360" height="20.333333333333314"/>
                                 <accessibility key="accessibilityConfiguration" label="The label displayed when no datas found"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,12 +230,13 @@
                         <constraints>
                             <constraint firstItem="iSm-Em-kdl" firstAttribute="top" secondItem="xBK-Bq-W0x" secondAttribute="top" id="8iu-g0-LU0"/>
                             <constraint firstItem="8Kv-Ff-Sjh" firstAttribute="centerY" secondItem="xBK-Bq-W0x" secondAttribute="centerY" id="DWy-xB-3tm"/>
+                            <constraint firstItem="H3E-aR-OgW" firstAttribute="leading" secondItem="xBK-Bq-W0x" secondAttribute="leading" constant="15" id="I4F-vO-MgB"/>
+                            <constraint firstItem="H3E-aR-OgW" firstAttribute="centerY" secondItem="xBK-Bq-W0x" secondAttribute="centerY" id="Ob2-Ct-BZ5"/>
                             <constraint firstItem="iSm-Em-kdl" firstAttribute="leading" secondItem="xBK-Bq-W0x" secondAttribute="leading" id="Sta-rt-3ZM"/>
-                            <constraint firstItem="H3E-aR-OgW" firstAttribute="centerX" secondItem="xBK-Bq-W0x" secondAttribute="centerX" id="Yhd-tr-P4e"/>
                             <constraint firstItem="xBK-Bq-W0x" firstAttribute="bottom" secondItem="iSm-Em-kdl" secondAttribute="bottom" id="cn4-fj-cis"/>
-                            <constraint firstItem="H3E-aR-OgW" firstAttribute="centerY" secondItem="xBK-Bq-W0x" secondAttribute="centerY" id="iaL-5u-9ie"/>
                             <constraint firstItem="xBK-Bq-W0x" firstAttribute="trailing" secondItem="iSm-Em-kdl" secondAttribute="trailing" id="khP-wf-Ltj"/>
                             <constraint firstItem="8Kv-Ff-Sjh" firstAttribute="centerX" secondItem="xBK-Bq-W0x" secondAttribute="centerX" id="vD5-MG-Hv3"/>
+                            <constraint firstItem="xBK-Bq-W0x" firstAttribute="trailing" secondItem="H3E-aR-OgW" secondAttribute="trailing" constant="15" id="yP9-eU-94X"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="xgn-Y1-NB6">
