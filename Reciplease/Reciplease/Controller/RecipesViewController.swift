@@ -17,6 +17,7 @@ class RecipesViewController: UIViewController {
 
     
     //MARK: Variables
+    private let apiService = APIService(session: AlamofireClient() as SessionProtocol)
     let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
     public var favoritesRecipes: [SavedRecipes] = [] {
         didSet {
@@ -46,7 +47,13 @@ class RecipesViewController: UIViewController {
         super.viewDidLoad()
         
         if !navigationIsOnFavorite {
-            self.getRecipes()
+            do {
+                try getRecipes()
+            } catch let error as APIError {
+                self.presentAlert(title: "An error occured", message: error.localizedDescription)
+            } catch {
+                self.presentAlert(title: "Error", message: "Unknown error")
+            }
         }
     }
     
@@ -88,25 +95,49 @@ class RecipesViewController: UIViewController {
     }
     
     /// Function used to get the recipes and store them in the recipes array
-    func getRecipes() {
-        APIService.shared.getRecipes { result in
-            switch result {
-            case .success(let recipes):
-                let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
-                
-                if recipes?.count == 0 {
-                    self.presentAlert(title: "Something went wrong", message: "No recipes found", handler: { _ in
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                } else {
-                    self.recipes = recipes ?? []
-                    self.hideLoader()
-                }
-                
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.presentAlert(title: "Error", message: error.description, handler: { _ in
-                        self.navigationController?.popViewController(animated: true)
+    func getRecipes() throws {
+//        APIService.shared.getRecipes { result in
+//            switch result {
+//            case .success(let recipes):
+//                let recipes = recipes.hits?.map({ $0.recipe?.toRecipe() })
+//
+//                if recipes?.count == 0 {
+//                    self.presentAlert(title: "Something went wrong", message: "No recipes found", handler: { _ in
+//                        self.navigationController?.popViewController(animated: true)
+//                    })
+//                } else {
+//                    self.recipes = recipes ?? []
+//                    self.hideLoader()
+//                }
+//
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    self.presentAlert(title: "Error", message: error.description, handler: { _ in
+//                        self.navigationController?.popViewController(animated: true)
+//                    })
+//                }
+//            }
+//        }
+        apiService.getRecipes { result in
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let recipes):
+                    let recipeArray = recipes.hits?.map({ $0.recipe?.toRecipe() })
+                    
+                    if let unwrappedRecipeArray = recipeArray {
+                        if unwrappedRecipeArray.count == 0 {
+                            strongSelf.presentAlert(title: "Something went wrong", message: "No recipes found", handler: { _ in
+                                strongSelf.navigationController?.popViewController(animated: true)
+                            })
+                        } else {
+                            strongSelf.recipes = unwrappedRecipeArray
+                            strongSelf.hideLoader()
+                        }
+                    }
+                case .failure(let error):
+                    strongSelf.presentAlert(title: "Error", message: error.description, handler: { _ in
+                        strongSelf.navigationController?.popViewController(animated: true)
                     })
                 }
             }
@@ -121,7 +152,6 @@ extension RecipesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if navigationIsOnFavorite {
-            // Empty = error sinon 
             return favoritesRecipes.count
         } else {
             return recipes.count

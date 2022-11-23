@@ -36,7 +36,7 @@ final class CoreDataTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        coreDataStack = CoreDataTestsStack(modelName: "Reciplease", persistentStoreDescription: "/dev/null")
+        coreDataStack = CoreDataStack(modelName: "Reciplease", persistentStoreDescription: "/dev/null")
         coreDataManager = CoreDataManager()
     }
     

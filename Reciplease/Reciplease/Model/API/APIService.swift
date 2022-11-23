@@ -10,36 +10,33 @@ import Alamofire
 
 /// An enumeration for the API errors
 enum APIError: Error {
-    case decoding
-    case server
-    case network
+    case data
+    case badRequest
     
     var description : String {
         switch self {
-        case APIError.decoding:
-            return "An error occured when decoding datas"
-        case APIError.network:
-            return "Network error"
-        case APIError.server:
-            return "Server error"
+        case APIError.data:
+            return "No Data"
+        case APIError.badRequest:
+            return "Bad request"
         }
     }
 }
 
 class APIService {
-    static let shared = APIService()
-    private let manager: Session
     
     //MARK: Variables
+    var session: SessionProtocol
     var ingredientsArray: [String] = []
+
     
-    init(manager: Session = Session.default) {
-        self.manager = manager
+    init(session: SessionProtocol) {
+        self.session = session
     }
     
     /// Function used to build the url use on the getRecipes function
     /// - Returns: URL
-    func makeURL() -> URL {
+    func makeURL(ingredients: [String]? = nil) -> URL {
         for ingredient in IngredientService.shared.ingredients {
             ingredientsArray.append(ingredient.name)
         }
@@ -66,32 +63,26 @@ class APIService {
     
     /// Function used to get the recipes
     /// - Parameter completion: A Result that gives a Recipes when success or an APIError when failure
-    func getRecipes(completion: @escaping (Result<Recipes, APIError>) -> Void) {
-        manager.request(makeURL())
-            .validate(statusCode: 200..<299)
-            .responseData { response in
-                switch response.result {
-                case .success(let recipes):
-                    switch response.response?.statusCode {
-                    case 200:
-                        do {
-                            let recipes = try JSONDecoder().decode(Recipes.self, from: recipes)
-                            completion(.success(recipes))
-                        } catch {
-                            print(error)
-                            completion(.failure(.decoding))
-                        }
-                    case 400,404:
-                        completion(.failure(.network))
-                    case 500,502,503:
-                        completion(.failure(.server))
-                    default:
-                        completion(.failure(.decoding))
-                    }
-                case .failure(_):
-                    completion(.failure(.server))
-                }
+    func getRecipes(ingredients: [String]? = nil, completion: @escaping (Result<Recipes, APIError>) -> Void) {
+        session.request(url: makeURL()) { data, response, error in
+            guard let data = data else {
+                completion(.failure(.data))
+                return
             }
+            
+            guard response?.statusCode == 200 else {
+                completion(.failure(.badRequest))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let recipes = try decoder.decode(Recipes.self, from: data)
+                completion(.success(recipes))
+            } catch {
+                completion(.failure(.data))
+            }
+        }
     }
 }
 
