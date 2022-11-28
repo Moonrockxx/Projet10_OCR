@@ -11,6 +11,7 @@ import Alamofire
 
 final class AlamofireTests: XCTestCase {
     
+    // MARK: - Variables
     var error: APIError!
     var ingredients: [String]? = ["mustard", "cheese", "tomatoes"]
     

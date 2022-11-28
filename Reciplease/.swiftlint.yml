@@ -1,0 +1,11 @@
+disabled_rules: # rule identifiers turned on by default to exclude from running
+  - trailing_whitespace
+  - identifier_name
+  - force_try
+  - line_length
+  - type_body_length
+  - force_cast
+  - statement_position
+  - legacy_constructor
+  - function_parameter_count
+  - unused_optional_binding

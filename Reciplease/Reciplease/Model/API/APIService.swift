@@ -12,24 +12,14 @@ import Alamofire
 enum APIError: Error {
     case data
     case badRequest
-    
-    var description : String {
-        switch self {
-        case APIError.data:
-            return "No Data"
-        case APIError.badRequest:
-            return "Bad request"
-        }
-    }
 }
 
 class APIService {
     
-    //MARK: Variables
+    // MARK: - Variables
     var session: SessionProtocol
     var ingredientsArray: [String] = []
 
-    
     init(session: SessionProtocol) {
         self.session = session
     }
@@ -64,7 +54,7 @@ class APIService {
     /// Function used to get the recipes
     /// - Parameter completion: A Result that gives a Recipes when success or an APIError when failure
     func getRecipes(ingredients: [String]? = nil, completion: @escaping (Result<Recipes, APIError>) -> Void) {
-        session.request(url: makeURL()) { data, response, error in
+        session.request(url: makeURL()) { data, response, _ in
             guard let data = data else {
                 completion(.failure(.data))
                 return
@@ -85,4 +75,3 @@ class APIService {
         }
     }
 }
-

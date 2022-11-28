@@ -10,14 +10,14 @@ import SDWebImage
 
 class RecipesTableViewCell: UITableViewCell {
 
-    //MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    //MARK: Constants
+    // MARK: - Constants
     let gradient = CAGradientLayer()
     
     override func awakeFromNib() {
@@ -55,7 +55,5 @@ class RecipesTableViewCell: UITableViewCell {
         
         recipeImage.contentMode = .scaleAspectFill
         recipeImage.sd_setImage(with: URL(string: image ?? ""))
-        
-        
     }
 }

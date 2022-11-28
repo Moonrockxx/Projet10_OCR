@@ -12,7 +12,7 @@ final class RecipleaseTests: XCTestCase {
     private var ingredients: [Ingredients] = []
     private var ingredientArray: [String] = []
 
-    //MARK: IngredientService
+    // MARK: - IngredientService
     func testGivenWeHaveIngredientArrays_WhenWeAddAnIngredient_ThenTheIngredientIsPresentInTheArrays() {
         let newIngredient = Ingredients(name: "Tomatoes")
         
@@ -44,6 +44,4 @@ final class RecipleaseTests: XCTestCase {
         IngredientService.shared.removeIngredients()
         XCTAssertEqual(IngredientService.shared.ingredients.first?.name, nil)
     }
-    
-    
 }

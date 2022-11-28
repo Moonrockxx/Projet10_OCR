@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: Ingredients
+// MARK: - Ingredients
 struct Ingredients: Equatable {
     var name: String = ""
 }

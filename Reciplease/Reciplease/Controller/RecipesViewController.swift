@@ -10,15 +10,16 @@ import SDWebImage
 
 class RecipesViewController: UIViewController {
     
-    //MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var recipesTableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
     
-    
-    //MARK: Variables
+    // MARK: - Constants
     private let apiService = APIService(session: AlamofireClient() as SessionProtocol)
     let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
+    
+    // MARK: - Variables
     public var favoritesRecipes: [SavedRecipes] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -72,13 +73,15 @@ class RecipesViewController: UIViewController {
                     }
                     
                 case .failure(let error):
-                    self.showEmptyFavorites(error: error.title)
+                    self.showEmptyFavorites(error: error.localizedDescription)
                 }
             })
         }
         
     }
     
+    /// This function is used when the favorites list is empty, she hides the loader and the table view to display an error message
+    /// - Parameter error: A string that describe the error
     private func showEmptyFavorites(error: String) {
         self.loader.isHidden = true
         self.recipesTableView.isHidden = true
@@ -87,6 +90,7 @@ class RecipesViewController: UIViewController {
         self.errorLabel.text = error
     }
     
+    /// This function is used to hide the loader and display the list of recipes/favorites
     func hideLoader() {
         self.loader.isHidden = true
         self.recipesTableView.isHidden = false

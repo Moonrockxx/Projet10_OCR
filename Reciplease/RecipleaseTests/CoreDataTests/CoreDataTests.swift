@@ -116,7 +116,6 @@ final class CoreDataTests: XCTestCase {
             print(error)
         }
         
-        
         coreDataManager.getFavorites(completionHandler: { result in
             switch result {
             case .success(let recipes):

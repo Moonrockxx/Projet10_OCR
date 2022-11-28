@@ -13,8 +13,12 @@ class CoreDataStack {
     // MARK: - Singleton
     static let shared: CoreDataStack = CoreDataStack(modelName: "Reciplease")
     var persistentContainer: NSPersistentContainer
-
     
+    // MARK: - Variables
+    var mainContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+
     // MARK: - Init
     init(modelName: String, persistentStoreDescription: String? = nil) {
         let description = NSPersistentStoreDescription()
@@ -24,17 +28,14 @@ class CoreDataStack {
         
         persistentContainer = NSPersistentContainer(name: modelName)
         persistentContainer.persistentStoreDescriptions = [description]
-        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        persistentContainer.loadPersistentStores(completionHandler: { (_, error) in
             guard let unwrappedError = error else { return }
             fatalError("Unresolved error \(unwrappedError.localizedDescription)")
         })
         
     }
-    var mainContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
 
-//MARK: Method to save
+    // MARK: - Method to save the context
     func saveContext() {
         do {
             try mainContext.save()

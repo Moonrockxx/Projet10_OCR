@@ -9,13 +9,13 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    //MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var addIngredientButton: UIButton!
     @IBOutlet weak var ingredientTableView: UITableView!
     @IBOutlet weak var clearIngredientListButton: UIButton!
     
-    //MARK: Variables
+    // MARK: - Variables
     private var ingredients: [String] = []
     
     override func viewDidLoad() {
@@ -108,5 +108,3 @@ extension SearchViewController: UITableViewDelegate {
         }
     }
 }
-
-

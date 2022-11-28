@@ -44,7 +44,8 @@
 		60B7A288291265F300932D69 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A286291265F200932D69 /* Reciplease.xcdatamodeld */; };
 		60B7A28A291266D600932D69 /* SavedRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A289291266D600932D69 /* SavedRecipes.swift */; };
 		60B7A28C291267A700932D69 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A28B291267A700932D69 /* CoreDataStack.swift */; };
-		60B7A28E29126D7800932D69 /* RecipeDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B7A28D29126D7800932D69 /* RecipeDetailsRepository.swift */; };
+		60D6EA362934B1E000740951 /* CoreDataManager.CDErrors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6EA352934B1E000740951 /* CoreDataManager.CDErrors+Extension.swift */; };
+		60D6EA382934BB2600740951 /* APIError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6EA372934BB2600740951 /* APIError+Extension.swift */; };
 		60F121842927CC1600FF1BDF /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F121832927CC1600FF1BDF /* CoreDataTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +104,8 @@
 		60B7A287291265F300932D69 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		60B7A289291266D600932D69 /* SavedRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipes.swift; sourceTree = "<group>"; };
 		60B7A28B291267A700932D69 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		60B7A28D29126D7800932D69 /* RecipeDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsRepository.swift; sourceTree = "<group>"; };
+		60D6EA352934B1E000740951 /* CoreDataManager.CDErrors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager.CDErrors+Extension.swift"; sourceTree = "<group>"; };
+		60D6EA372934BB2600740951 /* APIError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Extension.swift"; sourceTree = "<group>"; };
 		60F121832927CC1600FF1BDF /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +167,8 @@
 				6056C18928F864FD00238CA3 /* Double+Extension.swift */,
 				6056C18B28F8652800238CA3 /* String+Extension.swift */,
 				6056C18D28F8657900238CA3 /* Recipe+Extension.swift */,
+				60D6EA352934B1E000740951 /* CoreDataManager.CDErrors+Extension.swift */,
+				60D6EA372934BB2600740951 /* APIError+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,7 +260,6 @@
 				6056C17F28F809C800238CA3 /* IngredientService.swift */,
 				6056C18328F809F400238CA3 /* Ingredients.swift */,
 				6056C18728F8590C00238CA3 /* RecipeDetail.swift */,
-				60B7A28D29126D7800932D69 /* RecipeDetailsRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				60A2CB5528D9F5A2002321AC /* Sources */,
 				60A2CB5628D9F5A2002321AC /* Frameworks */,
 				60A2CB5728D9F5A2002321AC /* Resources */,
+				60D6EA342933BB0000740951 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -440,6 +444,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60D6EA342933BB0000740951 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		60A2CB5528D9F5A2002321AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -448,14 +473,15 @@
 				6056C18C28F8652800238CA3 /* String+Extension.swift in Sources */,
 				60A2CB9E28DB6C78002321AC /* RecipesViewController.swift in Sources */,
 				6056C18028F809C800238CA3 /* IngredientService.swift in Sources */,
+				60D6EA382934BB2600740951 /* APIError+Extension.swift in Sources */,
 				6031794B292E446100EA3806 /* SessionProtocol.swift in Sources */,
 				6056C18E28F8657900238CA3 /* Recipe+Extension.swift in Sources */,
 				60A2CB9128D9FE9F002321AC /* SearchViewController.swift in Sources */,
 				6065FD2628DCB99F00E885B2 /* GradientView.swift in Sources */,
 				6031794D292E452800EA3806 /* AlamofireClient.swift in Sources */,
 				60B7A28A291266D600932D69 /* SavedRecipes.swift in Sources */,
-				60B7A28E29126D7800932D69 /* RecipeDetailsRepository.swift in Sources */,
 				6056C18428F809F400238CA3 /* Ingredients.swift in Sources */,
+				60D6EA362934B1E000740951 /* CoreDataManager.CDErrors+Extension.swift in Sources */,
 				6067428728E5CEF900B5837E /* RecipeDetailsViewController.swift in Sources */,
 				60679E552912B5E300A52697 /* CoreDataManager.swift in Sources */,
 				6065FD2428DCB2C700E885B2 /* RecipesTableViewCell.swift in Sources */,
@@ -573,6 +599,7 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -627,6 +654,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -650,6 +678,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4449N9T968;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reciplease/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -682,6 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4449N9T968;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reciplease/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

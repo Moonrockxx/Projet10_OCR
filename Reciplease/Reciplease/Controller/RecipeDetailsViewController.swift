@@ -10,22 +10,21 @@ import SDWebImage
 
 class RecipeDetailsViewController: UIViewController {
     
-    //MARK: Outlets
+    // MARK: - Outlets
     @IBOutlet weak var recipeDetailsTimeLabel: UILabel!
     @IBOutlet weak var recipeDetailLikeLabel: UILabel!
     @IBOutlet weak var recipeDetailImageAndTitleVIew: UIView!
     @IBOutlet weak var recipeDetailImage: UIImageView!
     @IBOutlet weak var recipeDetailTitle: UILabel!
     
-    var previousTableView: UITableView!
+    // MARK: - Constants
+    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
     
-    //MARK: Properties
+    // MARK: - Varaibles
     public var recipeDetails: RecipeDetail?
     public var favoriteRecipeDetails: SavedRecipes?
     var navigationIsOnFavorite: Bool?
-    
-    let coreDataManager = CoreDataManager(managedObjectContext: CoreDataStack.shared.mainContext)
-    
+    var previousTableView: UITableView!
     lazy var favoriteButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonTapped))
         button.tintColor = .white
@@ -38,17 +37,18 @@ class RecipeDetailsViewController: UIViewController {
         self.makeView()
     }
     
+    /// This function will display a web view of the recipe on the edamam website
+    /// - Parameter sender: The button "Get directions"
     @IBAction func getDirections(_ sender: Any) {
         guard navigationIsOnFavorite ?? true else {
             if let url = URL(string: recipeDetails?.url ?? "") {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 } else {
-                    // present alert
+                    self.presentAlert(title: "Error", message: "Unable to display the page for this recipe")
                 }
                 
             }
-            
             return
         }
         
@@ -56,10 +56,12 @@ class RecipeDetailsViewController: UIViewController {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                // present alert
+                self.presentAlert(title: "Error", message: "Unable to display the page for this recipe")
             }
         }
     }
+    
+    /// The function will allow you to add a recipe to the favorites, first we will look if the navigation is in Favorites mode and then we check that the recipe is not already present in the database. Depending on the conditions, we add or remove the recipe from the favorites
     @objc func favoriteButtonTapped() {
         guard self.navigationIsOnFavorite ?? true else {
             if coreDataManager.recipeIsAlreadySaved(url: recipeDetails?.url ?? "") {
@@ -82,6 +84,8 @@ class RecipeDetailsViewController: UIViewController {
         }
     }
     
+    /// This function is used to call the removeRecipe method of the CoreDataManager for remove a recipe from favorites
+    /// - Parameter uri: A String that represents a URI for a given recipe
     func removeRecipe(uri: String) {
         do {
             try coreDataManager.removeRecipe(uri: uri)

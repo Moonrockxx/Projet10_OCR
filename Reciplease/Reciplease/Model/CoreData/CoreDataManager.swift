@@ -18,23 +18,21 @@ protocol CoreDataManagerProtocol {
 }
 
 class CoreDataManager: CoreDataManagerProtocol {
+    
+    // MARK: - Enum
     enum CDErrors: Error {
         case noData
-        
-        var title: String {
-            switch self {
-            case .noData:
-                return "No datas found in your favorites"
-            }
-        }
     }
     
+    // MARK: - Constants
     let managedObjectContext: NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.managedObjectContext = managedObjectContext
     }
     
+    /// This function is used to save the recipe in CoreData and as favorite
+    /// - Parameter recipe: A RecipeDetails object that will be saved
     func saveRecipe(recipe: RecipeDetail) {
         let entity = SavedRecipes(context: managedObjectContext)
         entity.title = recipe.title
@@ -53,6 +51,8 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
+    /// This function is used to get the favorites recipes
+    /// - Parameter completionHandler: A type Result that takes a SavedRecipes array and CDErrors
     func getFavorites(completionHandler: @escaping (Result<[SavedRecipes], CDErrors>) -> Void) {
         let request: NSFetchRequest = SavedRecipes.fetchRequest()
         do {
@@ -64,6 +64,8 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
+    /// This function is used to remove a recipe from CoreData and favorites
+    /// - Parameter uri: A String that represents the URI of a given recipes
     func removeRecipe(uri: String) throws {
         let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "uri == %@", uri)
@@ -79,6 +81,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
+    /// This function remove all recipes from CoreData and favorites
     func removeAllRecipes() throws {
         let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
         let result = try? managedObjectContext.fetch(fetchRequest)
@@ -97,16 +100,15 @@ class CoreDataManager: CoreDataManagerProtocol {
         
     }
     
+    /// This function check if the recipe is already saved
+    /// - Parameter url: A String that represents the URL of a given recipe
+    /// - Returns: A boolean. True if the recipe is already saved, false if she isn't
     func recipeIsAlreadySaved(url: String) -> Bool {
         let request: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
         request.predicate = NSPredicate(format: "url == %@", url)
         
         guard let recipes = try? managedObjectContext.fetch(request) else { return false }
         
-        if recipes.isEmpty {
-            return false
-        } else {
-            return true
-        }
+        return !recipes.isEmpty
     }
 }
