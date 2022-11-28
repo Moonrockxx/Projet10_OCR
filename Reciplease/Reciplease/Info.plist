@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>EDAMAM_APP_ID</key>
+	<string>b249e3df</string>
+	<key>EDAMAM_API_KEY</key>
+	<string>2aa7376e982fbc0f0f0f88c4b59ff6ae</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

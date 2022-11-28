@@ -37,8 +37,8 @@ class APIService {
         components.path = "/api/recipes/v2"
         components.queryItems = [
             URLQueryItem(name: "type", value: "public"),
-            URLQueryItem(name: "app_id", value: "b249e3df"),
-            URLQueryItem(name: "app_key", value: "2aa7376e982fbc0f0f0f88c4b59ff6ae"),
+            URLQueryItem(name: "app_id", value: Bundle.main.infoDictionary?["EDAMAM_APP_ID"] as? String),
+            URLQueryItem(name: "app_key", value: Bundle.main.infoDictionary?["EDAMAM_API_KEY"] as? String),
             URLQueryItem(name: "time", value: "10-60"),
             URLQueryItem(name: "imageSize", value: "REGULAR"),
             URLQueryItem(name: "q", value: ingredientsArray.joined(separator: ","))
